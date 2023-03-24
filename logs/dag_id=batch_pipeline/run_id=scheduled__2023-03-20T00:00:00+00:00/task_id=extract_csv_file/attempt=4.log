@@ -1,0 +1,115 @@
+[2023-03-21T13:16:42.645+0000] {taskinstance.py:1084} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: batch_pipeline.extract_csv_file scheduled__2023-03-20T00:00:00+00:00 [queued]>
+[2023-03-21T13:16:42.670+0000] {taskinstance.py:1084} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: batch_pipeline.extract_csv_file scheduled__2023-03-20T00:00:00+00:00 [queued]>
+[2023-03-21T13:16:42.673+0000] {taskinstance.py:1282} INFO - 
+--------------------------------------------------------------------------------
+[2023-03-21T13:16:42.675+0000] {taskinstance.py:1283} INFO - Starting attempt 4 of 4
+[2023-03-21T13:16:42.676+0000] {taskinstance.py:1284} INFO - 
+--------------------------------------------------------------------------------
+[2023-03-21T13:16:42.726+0000] {taskinstance.py:1303} INFO - Executing <Task(PythonOperator): extract_csv_file> on 2023-03-20 00:00:00+00:00
+[2023-03-21T13:16:42.754+0000] {standard_task_runner.py:55} INFO - Started process 970 to run task
+[2023-03-21T13:16:42.772+0000] {standard_task_runner.py:82} INFO - Running: ['***', 'tasks', 'run', 'batch_pipeline', 'extract_csv_file', 'scheduled__2023-03-20T00:00:00+00:00', '--job-id', '27', '--raw', '--subdir', 'DAGS_FOLDER/batch_pipeline.py', '--cfg-path', '/tmp/tmpu93wk69i']
+[2023-03-21T13:16:42.778+0000] {standard_task_runner.py:83} INFO - Job 27: Subtask extract_csv_file
+[2023-03-21T13:16:42.980+0000] {task_command.py:388} INFO - Running <TaskInstance: batch_pipeline.extract_csv_file scheduled__2023-03-20T00:00:00+00:00 [running]> on host 070f7bf9e1a1
+[2023-03-21T13:16:43.174+0000] {taskinstance.py:1511} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=Pedrosa
+AIRFLOW_CTX_DAG_ID=batch_pipeline
+AIRFLOW_CTX_TASK_ID=extract_csv_file
+AIRFLOW_CTX_EXECUTION_DATE=2023-03-20T00:00:00+00:00
+AIRFLOW_CTX_TRY_NUMBER=4
+AIRFLOW_CTX_DAG_RUN_ID=scheduled__2023-03-20T00:00:00+00:00
+[2023-03-21T13:16:43.251+0000] {python.py:177} INFO - Done. Returned value was: None
+[2023-03-21T13:16:43.278+0000] {taskinstance.py:1326} INFO - Marking task as SUCCESS. dag_id=batch_pipeline, task_id=extract_csv_file, execution_date=20230320T000000, start_date=20230321T131642, end_date=20230321T131643
+[2023-03-21T13:16:43.341+0000] {local_task_job.py:212} INFO - Task exited with return code 0
+[2023-03-21T13:16:43.414+0000] {taskinstance.py:2585} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2023-03-21T15:00:53.963+0000] {taskinstance.py:1084} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: batch_pipeline.extract_csv_file scheduled__2023-03-20T00:00:00+00:00 [queued]>
+[2023-03-21T15:00:53.991+0000] {taskinstance.py:1084} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: batch_pipeline.extract_csv_file scheduled__2023-03-20T00:00:00+00:00 [queued]>
+[2023-03-21T15:00:53.993+0000] {taskinstance.py:1282} INFO - 
+--------------------------------------------------------------------------------
+[2023-03-21T15:00:53.995+0000] {taskinstance.py:1283} INFO - Starting attempt 4 of 4
+[2023-03-21T15:00:53.997+0000] {taskinstance.py:1284} INFO - 
+--------------------------------------------------------------------------------
+[2023-03-21T15:00:54.044+0000] {taskinstance.py:1303} INFO - Executing <Task(PythonOperator): extract_csv_file> on 2023-03-20 00:00:00+00:00
+[2023-03-21T15:00:54.056+0000] {standard_task_runner.py:55} INFO - Started process 2879 to run task
+[2023-03-21T15:00:54.068+0000] {standard_task_runner.py:82} INFO - Running: ['***', 'tasks', 'run', 'batch_pipeline', 'extract_csv_file', 'scheduled__2023-03-20T00:00:00+00:00', '--job-id', '104', '--raw', '--subdir', 'DAGS_FOLDER/load_csv.py', '--cfg-path', '/tmp/tmp502i_vmz']
+[2023-03-21T15:00:54.074+0000] {standard_task_runner.py:83} INFO - Job 104: Subtask extract_csv_file
+[2023-03-21T15:00:54.308+0000] {task_command.py:388} INFO - Running <TaskInstance: batch_pipeline.extract_csv_file scheduled__2023-03-20T00:00:00+00:00 [running]> on host 070f7bf9e1a1
+[2023-03-21T15:00:54.545+0000] {taskinstance.py:1511} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=Pedrosa
+AIRFLOW_CTX_DAG_ID=batch_pipeline
+AIRFLOW_CTX_TASK_ID=extract_csv_file
+AIRFLOW_CTX_EXECUTION_DATE=2023-03-20T00:00:00+00:00
+AIRFLOW_CTX_TRY_NUMBER=4
+AIRFLOW_CTX_DAG_RUN_ID=scheduled__2023-03-20T00:00:00+00:00
+[2023-03-21T15:00:54.643+0000] {python.py:177} INFO - Done. Returned value was: None
+[2023-03-21T15:00:54.668+0000] {taskinstance.py:1326} INFO - Marking task as SUCCESS. dag_id=batch_pipeline, task_id=extract_csv_file, execution_date=20230320T000000, start_date=20230321T150053, end_date=20230321T150054
+[2023-03-21T15:00:54.750+0000] {local_task_job.py:212} INFO - Task exited with return code 0
+[2023-03-21T15:00:54.831+0000] {taskinstance.py:2585} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2023-03-21T15:17:56.317+0000] {taskinstance.py:1084} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: batch_pipeline.extract_csv_file scheduled__2023-03-20T00:00:00+00:00 [queued]>
+[2023-03-21T15:17:56.365+0000] {taskinstance.py:1084} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: batch_pipeline.extract_csv_file scheduled__2023-03-20T00:00:00+00:00 [queued]>
+[2023-03-21T15:17:56.367+0000] {taskinstance.py:1282} INFO - 
+--------------------------------------------------------------------------------
+[2023-03-21T15:17:56.369+0000] {taskinstance.py:1283} INFO - Starting attempt 4 of 4
+[2023-03-21T15:17:56.371+0000] {taskinstance.py:1284} INFO - 
+--------------------------------------------------------------------------------
+[2023-03-21T15:17:56.443+0000] {taskinstance.py:1303} INFO - Executing <Task(PythonOperator): extract_csv_file> on 2023-03-20 00:00:00+00:00
+[2023-03-21T15:17:56.470+0000] {standard_task_runner.py:55} INFO - Started process 3189 to run task
+[2023-03-21T15:17:56.509+0000] {standard_task_runner.py:82} INFO - Running: ['***', 'tasks', 'run', 'batch_pipeline', 'extract_csv_file', 'scheduled__2023-03-20T00:00:00+00:00', '--job-id', '119', '--raw', '--subdir', 'DAGS_FOLDER/load_csv.py', '--cfg-path', '/tmp/tmpi8kmvydw']
+[2023-03-21T15:17:56.516+0000] {standard_task_runner.py:83} INFO - Job 119: Subtask extract_csv_file
+[2023-03-21T15:17:56.843+0000] {task_command.py:388} INFO - Running <TaskInstance: batch_pipeline.extract_csv_file scheduled__2023-03-20T00:00:00+00:00 [running]> on host 070f7bf9e1a1
+[2023-03-21T15:17:57.550+0000] {taskinstance.py:1511} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=Pedrosa
+AIRFLOW_CTX_DAG_ID=batch_pipeline
+AIRFLOW_CTX_TASK_ID=extract_csv_file
+AIRFLOW_CTX_EXECUTION_DATE=2023-03-20T00:00:00+00:00
+AIRFLOW_CTX_TRY_NUMBER=4
+AIRFLOW_CTX_DAG_RUN_ID=scheduled__2023-03-20T00:00:00+00:00
+[2023-03-21T15:17:57.822+0000] {python.py:177} INFO - Done. Returned value was: None
+[2023-03-21T15:17:57.966+0000] {taskinstance.py:1326} INFO - Marking task as SUCCESS. dag_id=batch_pipeline, task_id=extract_csv_file, execution_date=20230320T000000, start_date=20230321T151756, end_date=20230321T151757
+[2023-03-21T15:17:58.167+0000] {local_task_job.py:212} INFO - Task exited with return code 0
+[2023-03-21T15:17:58.334+0000] {taskinstance.py:2585} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2023-03-21T15:34:08.192+0000] {taskinstance.py:1084} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: batch_pipeline.extract_csv_file scheduled__2023-03-20T00:00:00+00:00 [queued]>
+[2023-03-21T15:34:08.226+0000] {taskinstance.py:1084} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: batch_pipeline.extract_csv_file scheduled__2023-03-20T00:00:00+00:00 [queued]>
+[2023-03-21T15:34:08.230+0000] {taskinstance.py:1282} INFO - 
+--------------------------------------------------------------------------------
+[2023-03-21T15:34:08.233+0000] {taskinstance.py:1283} INFO - Starting attempt 4 of 4
+[2023-03-21T15:34:08.236+0000] {taskinstance.py:1284} INFO - 
+--------------------------------------------------------------------------------
+[2023-03-21T15:34:08.278+0000] {taskinstance.py:1303} INFO - Executing <Task(PythonOperator): extract_csv_file> on 2023-03-20 00:00:00+00:00
+[2023-03-21T15:34:08.297+0000] {standard_task_runner.py:55} INFO - Started process 3475 to run task
+[2023-03-21T15:34:08.316+0000] {standard_task_runner.py:82} INFO - Running: ['***', 'tasks', 'run', 'batch_pipeline', 'extract_csv_file', 'scheduled__2023-03-20T00:00:00+00:00', '--job-id', '131', '--raw', '--subdir', 'DAGS_FOLDER/load_csv.py', '--cfg-path', '/tmp/tmpywxsh40c']
+[2023-03-21T15:34:08.319+0000] {standard_task_runner.py:83} INFO - Job 131: Subtask extract_csv_file
+[2023-03-21T15:34:08.881+0000] {task_command.py:388} INFO - Running <TaskInstance: batch_pipeline.extract_csv_file scheduled__2023-03-20T00:00:00+00:00 [running]> on host 070f7bf9e1a1
+[2023-03-21T15:34:10.358+0000] {taskinstance.py:1511} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=Pedrosa
+AIRFLOW_CTX_DAG_ID=batch_pipeline
+AIRFLOW_CTX_TASK_ID=extract_csv_file
+AIRFLOW_CTX_EXECUTION_DATE=2023-03-20T00:00:00+00:00
+AIRFLOW_CTX_TRY_NUMBER=4
+AIRFLOW_CTX_DAG_RUN_ID=scheduled__2023-03-20T00:00:00+00:00
+[2023-03-21T15:34:10.848+0000] {python.py:177} INFO - Done. Returned value was: None
+[2023-03-21T15:34:10.938+0000] {taskinstance.py:1326} INFO - Marking task as SUCCESS. dag_id=batch_pipeline, task_id=extract_csv_file, execution_date=20230320T000000, start_date=20230321T153408, end_date=20230321T153410
+[2023-03-21T15:34:11.918+0000] {local_task_job.py:212} INFO - Task exited with return code 0
+[2023-03-21T15:34:14.852+0000] {taskinstance.py:2585} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2023-03-21T15:53:00.434+0000] {taskinstance.py:1084} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: batch_pipeline.extract_csv_file scheduled__2023-03-20T00:00:00+00:00 [queued]>
+[2023-03-21T15:53:00.556+0000] {taskinstance.py:1084} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: batch_pipeline.extract_csv_file scheduled__2023-03-20T00:00:00+00:00 [queued]>
+[2023-03-21T15:53:00.579+0000] {taskinstance.py:1282} INFO - 
+--------------------------------------------------------------------------------
+[2023-03-21T15:53:00.581+0000] {taskinstance.py:1283} INFO - Starting attempt 4 of 4
+[2023-03-21T15:53:00.584+0000] {taskinstance.py:1284} INFO - 
+--------------------------------------------------------------------------------
+[2023-03-21T15:53:00.793+0000] {taskinstance.py:1303} INFO - Executing <Task(PythonOperator): extract_csv_file> on 2023-03-20 00:00:00+00:00
+[2023-03-21T15:53:00.883+0000] {standard_task_runner.py:55} INFO - Started process 3835 to run task
+[2023-03-21T15:53:01.149+0000] {standard_task_runner.py:82} INFO - Running: ['***', 'tasks', 'run', 'batch_pipeline', 'extract_csv_file', 'scheduled__2023-03-20T00:00:00+00:00', '--job-id', '155', '--raw', '--subdir', 'DAGS_FOLDER/batch_pipeline.py', '--cfg-path', '/tmp/tmpd8dr4jct']
+[2023-03-21T15:53:01.159+0000] {standard_task_runner.py:83} INFO - Job 155: Subtask extract_csv_file
+[2023-03-21T15:53:01.569+0000] {task_command.py:388} INFO - Running <TaskInstance: batch_pipeline.extract_csv_file scheduled__2023-03-20T00:00:00+00:00 [running]> on host 070f7bf9e1a1
+[2023-03-21T15:53:02.175+0000] {taskinstance.py:1511} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=Pedrosa
+AIRFLOW_CTX_DAG_ID=batch_pipeline
+AIRFLOW_CTX_TASK_ID=extract_csv_file
+AIRFLOW_CTX_EXECUTION_DATE=2023-03-20T00:00:00+00:00
+AIRFLOW_CTX_TRY_NUMBER=4
+AIRFLOW_CTX_DAG_RUN_ID=scheduled__2023-03-20T00:00:00+00:00
+[2023-03-21T15:53:02.523+0000] {python.py:177} INFO - Done. Returned value was: None
+[2023-03-21T15:53:02.715+0000] {taskinstance.py:1326} INFO - Marking task as SUCCESS. dag_id=batch_pipeline, task_id=extract_csv_file, execution_date=20230320T000000, start_date=20230321T155300, end_date=20230321T155302
+[2023-03-21T15:53:02.855+0000] {local_task_job.py:212} INFO - Task exited with return code 0
+[2023-03-21T15:53:03.006+0000] {taskinstance.py:2585} INFO - 1 downstream tasks scheduled from follow-on schedule check

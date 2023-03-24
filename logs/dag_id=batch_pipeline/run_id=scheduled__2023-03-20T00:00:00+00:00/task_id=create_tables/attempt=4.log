@@ -1,0 +1,280 @@
+[2023-03-21T13:16:52.731+0000] {taskinstance.py:1084} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: batch_pipeline.create_tables scheduled__2023-03-20T00:00:00+00:00 [queued]>
+[2023-03-21T13:16:52.761+0000] {taskinstance.py:1084} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: batch_pipeline.create_tables scheduled__2023-03-20T00:00:00+00:00 [queued]>
+[2023-03-21T13:16:52.763+0000] {taskinstance.py:1282} INFO - 
+--------------------------------------------------------------------------------
+[2023-03-21T13:16:52.765+0000] {taskinstance.py:1283} INFO - Starting attempt 4 of 4
+[2023-03-21T13:16:52.768+0000] {taskinstance.py:1284} INFO - 
+--------------------------------------------------------------------------------
+[2023-03-21T13:16:52.808+0000] {taskinstance.py:1303} INFO - Executing <Task(PostgresOperator): create_tables> on 2023-03-20 00:00:00+00:00
+[2023-03-21T13:16:52.830+0000] {standard_task_runner.py:55} INFO - Started process 980 to run task
+[2023-03-21T13:16:52.851+0000] {standard_task_runner.py:82} INFO - Running: ['***', 'tasks', 'run', 'batch_pipeline', 'create_tables', 'scheduled__2023-03-20T00:00:00+00:00', '--job-id', '31', '--raw', '--subdir', 'DAGS_FOLDER/batch_pipeline.py', '--cfg-path', '/tmp/tmpq3aj4u9v']
+[2023-03-21T13:16:52.855+0000] {standard_task_runner.py:83} INFO - Job 31: Subtask create_tables
+[2023-03-21T13:16:53.065+0000] {task_command.py:388} INFO - Running <TaskInstance: batch_pipeline.create_tables scheduled__2023-03-20T00:00:00+00:00 [running]> on host 070f7bf9e1a1
+[2023-03-21T13:16:53.154+0000] {abstractoperator.py:615} ERROR - Exception rendering Jinja template for task 'create_tables', field 'sql'. Template: 'create_tables.sql'
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/abstractoperator.py", line 607, in _do_render_template_fields
+    seen_oids,
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/abstractoperator.py", line 659, in render_template
+    template = jinja_env.get_template(value)
+  File "/home/airflow/.local/lib/python3.7/site-packages/jinja2/environment.py", line 1010, in get_template
+    return self._load_template(name, globals)
+  File "/home/airflow/.local/lib/python3.7/site-packages/jinja2/environment.py", line 969, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "/home/airflow/.local/lib/python3.7/site-packages/jinja2/loaders.py", line 126, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "/home/airflow/.local/lib/python3.7/site-packages/jinja2/loaders.py", line 218, in get_source
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: create_tables.sql
+[2023-03-21T13:16:53.159+0000] {taskinstance.py:1775} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/taskinstance.py", line 1377, in _run_raw_task
+    self._execute_task_with_callbacks(context, test_mode)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/taskinstance.py", line 1495, in _execute_task_with_callbacks
+    task_orig = self.render_templates(context=context)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/taskinstance.py", line 2122, in render_templates
+    original_task.render_template_fields(context)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/baseoperator.py", line 1179, in render_template_fields
+    self._do_render_template_fields(self, self.template_fields, context, jinja_env, set())
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/session.py", line 75, in wrapper
+    return func(*args, session=session, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/abstractoperator.py", line 607, in _do_render_template_fields
+    seen_oids,
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/abstractoperator.py", line 659, in render_template
+    template = jinja_env.get_template(value)
+  File "/home/airflow/.local/lib/python3.7/site-packages/jinja2/environment.py", line 1010, in get_template
+    return self._load_template(name, globals)
+  File "/home/airflow/.local/lib/python3.7/site-packages/jinja2/environment.py", line 969, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "/home/airflow/.local/lib/python3.7/site-packages/jinja2/loaders.py", line 126, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "/home/airflow/.local/lib/python3.7/site-packages/jinja2/loaders.py", line 218, in get_source
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: create_tables.sql
+[2023-03-21T13:16:53.191+0000] {taskinstance.py:1326} INFO - Marking task as FAILED. dag_id=batch_pipeline, task_id=create_tables, execution_date=20230320T000000, start_date=20230321T131652, end_date=20230321T131653
+[2023-03-21T13:16:53.222+0000] {standard_task_runner.py:105} ERROR - Failed to execute job 31 for task create_tables (create_tables.sql; 980)
+[2023-03-21T13:16:53.284+0000] {local_task_job.py:212} INFO - Task exited with return code 1
+[2023-03-21T13:16:53.373+0000] {taskinstance.py:2585} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2023-03-21T15:01:02.308+0000] {taskinstance.py:1084} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: batch_pipeline.create_tables scheduled__2023-03-20T00:00:00+00:00 [queued]>
+[2023-03-21T15:01:02.333+0000] {taskinstance.py:1084} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: batch_pipeline.create_tables scheduled__2023-03-20T00:00:00+00:00 [queued]>
+[2023-03-21T15:01:02.335+0000] {taskinstance.py:1282} INFO - 
+--------------------------------------------------------------------------------
+[2023-03-21T15:01:02.338+0000] {taskinstance.py:1283} INFO - Starting attempt 4 of 4
+[2023-03-21T15:01:02.340+0000] {taskinstance.py:1284} INFO - 
+--------------------------------------------------------------------------------
+[2023-03-21T15:01:02.381+0000] {taskinstance.py:1303} INFO - Executing <Task(PostgresOperator): create_tables> on 2023-03-20 00:00:00+00:00
+[2023-03-21T15:01:02.398+0000] {standard_task_runner.py:55} INFO - Started process 2885 to run task
+[2023-03-21T15:01:02.417+0000] {standard_task_runner.py:82} INFO - Running: ['***', 'tasks', 'run', 'batch_pipeline', 'create_tables', 'scheduled__2023-03-20T00:00:00+00:00', '--job-id', '106', '--raw', '--subdir', 'DAGS_FOLDER/batch_pipeline.py', '--cfg-path', '/tmp/tmp_ywl0b_l']
+[2023-03-21T15:01:02.420+0000] {standard_task_runner.py:83} INFO - Job 106: Subtask create_tables
+[2023-03-21T15:01:02.578+0000] {task_command.py:388} INFO - Running <TaskInstance: batch_pipeline.create_tables scheduled__2023-03-20T00:00:00+00:00 [running]> on host 070f7bf9e1a1
+[2023-03-21T15:01:02.684+0000] {abstractoperator.py:615} ERROR - Exception rendering Jinja template for task 'create_tables', field 'sql'. Template: 'create_tables.sql'
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/abstractoperator.py", line 607, in _do_render_template_fields
+    seen_oids,
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/abstractoperator.py", line 659, in render_template
+    template = jinja_env.get_template(value)
+  File "/home/airflow/.local/lib/python3.7/site-packages/jinja2/environment.py", line 1010, in get_template
+    return self._load_template(name, globals)
+  File "/home/airflow/.local/lib/python3.7/site-packages/jinja2/environment.py", line 969, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "/home/airflow/.local/lib/python3.7/site-packages/jinja2/loaders.py", line 126, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "/home/airflow/.local/lib/python3.7/site-packages/jinja2/loaders.py", line 218, in get_source
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: create_tables.sql
+[2023-03-21T15:01:02.695+0000] {taskinstance.py:1775} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/taskinstance.py", line 1377, in _run_raw_task
+    self._execute_task_with_callbacks(context, test_mode)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/taskinstance.py", line 1495, in _execute_task_with_callbacks
+    task_orig = self.render_templates(context=context)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/taskinstance.py", line 2122, in render_templates
+    original_task.render_template_fields(context)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/baseoperator.py", line 1179, in render_template_fields
+    self._do_render_template_fields(self, self.template_fields, context, jinja_env, set())
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/session.py", line 75, in wrapper
+    return func(*args, session=session, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/abstractoperator.py", line 607, in _do_render_template_fields
+    seen_oids,
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/abstractoperator.py", line 659, in render_template
+    template = jinja_env.get_template(value)
+  File "/home/airflow/.local/lib/python3.7/site-packages/jinja2/environment.py", line 1010, in get_template
+    return self._load_template(name, globals)
+  File "/home/airflow/.local/lib/python3.7/site-packages/jinja2/environment.py", line 969, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "/home/airflow/.local/lib/python3.7/site-packages/jinja2/loaders.py", line 126, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "/home/airflow/.local/lib/python3.7/site-packages/jinja2/loaders.py", line 218, in get_source
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: create_tables.sql
+[2023-03-21T15:01:02.734+0000] {taskinstance.py:1326} INFO - Marking task as FAILED. dag_id=batch_pipeline, task_id=create_tables, execution_date=20230320T000000, start_date=20230321T150102, end_date=20230321T150102
+[2023-03-21T15:01:02.776+0000] {standard_task_runner.py:105} ERROR - Failed to execute job 106 for task create_tables (create_tables.sql; 2885)
+[2023-03-21T15:01:02.828+0000] {local_task_job.py:212} INFO - Task exited with return code 1
+[2023-03-21T15:01:02.997+0000] {taskinstance.py:2585} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2023-03-21T15:18:09.341+0000] {taskinstance.py:1084} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: batch_pipeline.create_tables scheduled__2023-03-20T00:00:00+00:00 [queued]>
+[2023-03-21T15:18:09.370+0000] {taskinstance.py:1084} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: batch_pipeline.create_tables scheduled__2023-03-20T00:00:00+00:00 [queued]>
+[2023-03-21T15:18:09.374+0000] {taskinstance.py:1282} INFO - 
+--------------------------------------------------------------------------------
+[2023-03-21T15:18:09.375+0000] {taskinstance.py:1283} INFO - Starting attempt 4 of 4
+[2023-03-21T15:18:09.378+0000] {taskinstance.py:1284} INFO - 
+--------------------------------------------------------------------------------
+[2023-03-21T15:18:09.409+0000] {taskinstance.py:1303} INFO - Executing <Task(PostgresOperator): create_tables> on 2023-03-20 00:00:00+00:00
+[2023-03-21T15:18:09.421+0000] {standard_task_runner.py:55} INFO - Started process 3196 to run task
+[2023-03-21T15:18:09.430+0000] {standard_task_runner.py:82} INFO - Running: ['***', 'tasks', 'run', 'batch_pipeline', 'create_tables', 'scheduled__2023-03-20T00:00:00+00:00', '--job-id', '121', '--raw', '--subdir', 'DAGS_FOLDER/load_csv.py', '--cfg-path', '/tmp/tmpxb4afl6s']
+[2023-03-21T15:18:09.433+0000] {standard_task_runner.py:83} INFO - Job 121: Subtask create_tables
+[2023-03-21T15:18:09.574+0000] {task_command.py:388} INFO - Running <TaskInstance: batch_pipeline.create_tables scheduled__2023-03-20T00:00:00+00:00 [running]> on host 070f7bf9e1a1
+[2023-03-21T15:18:09.714+0000] {abstractoperator.py:615} ERROR - Exception rendering Jinja template for task 'create_tables', field 'sql'. Template: 'create_tables.sql'
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/abstractoperator.py", line 607, in _do_render_template_fields
+    seen_oids,
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/abstractoperator.py", line 659, in render_template
+    template = jinja_env.get_template(value)
+  File "/home/airflow/.local/lib/python3.7/site-packages/jinja2/environment.py", line 1010, in get_template
+    return self._load_template(name, globals)
+  File "/home/airflow/.local/lib/python3.7/site-packages/jinja2/environment.py", line 969, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "/home/airflow/.local/lib/python3.7/site-packages/jinja2/loaders.py", line 126, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "/home/airflow/.local/lib/python3.7/site-packages/jinja2/loaders.py", line 218, in get_source
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: create_tables.sql
+[2023-03-21T15:18:09.718+0000] {taskinstance.py:1775} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/taskinstance.py", line 1377, in _run_raw_task
+    self._execute_task_with_callbacks(context, test_mode)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/taskinstance.py", line 1495, in _execute_task_with_callbacks
+    task_orig = self.render_templates(context=context)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/taskinstance.py", line 2122, in render_templates
+    original_task.render_template_fields(context)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/baseoperator.py", line 1179, in render_template_fields
+    self._do_render_template_fields(self, self.template_fields, context, jinja_env, set())
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/session.py", line 75, in wrapper
+    return func(*args, session=session, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/abstractoperator.py", line 607, in _do_render_template_fields
+    seen_oids,
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/abstractoperator.py", line 659, in render_template
+    template = jinja_env.get_template(value)
+  File "/home/airflow/.local/lib/python3.7/site-packages/jinja2/environment.py", line 1010, in get_template
+    return self._load_template(name, globals)
+  File "/home/airflow/.local/lib/python3.7/site-packages/jinja2/environment.py", line 969, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "/home/airflow/.local/lib/python3.7/site-packages/jinja2/loaders.py", line 126, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "/home/airflow/.local/lib/python3.7/site-packages/jinja2/loaders.py", line 218, in get_source
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: create_tables.sql
+[2023-03-21T15:18:09.737+0000] {taskinstance.py:1326} INFO - Marking task as FAILED. dag_id=batch_pipeline, task_id=create_tables, execution_date=20230320T000000, start_date=20230321T151809, end_date=20230321T151809
+[2023-03-21T15:18:09.766+0000] {standard_task_runner.py:105} ERROR - Failed to execute job 121 for task create_tables (create_tables.sql; 3196)
+[2023-03-21T15:18:09.803+0000] {local_task_job.py:212} INFO - Task exited with return code 1
+[2023-03-21T15:18:09.888+0000] {taskinstance.py:2585} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2023-03-21T15:34:35.623+0000] {taskinstance.py:1084} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: batch_pipeline.create_tables scheduled__2023-03-20T00:00:00+00:00 [queued]>
+[2023-03-21T15:34:35.648+0000] {taskinstance.py:1084} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: batch_pipeline.create_tables scheduled__2023-03-20T00:00:00+00:00 [queued]>
+[2023-03-21T15:34:35.650+0000] {taskinstance.py:1282} INFO - 
+--------------------------------------------------------------------------------
+[2023-03-21T15:34:35.652+0000] {taskinstance.py:1283} INFO - Starting attempt 4 of 4
+[2023-03-21T15:34:35.657+0000] {taskinstance.py:1284} INFO - 
+--------------------------------------------------------------------------------
+[2023-03-21T15:34:35.713+0000] {taskinstance.py:1303} INFO - Executing <Task(PostgresOperator): create_tables> on 2023-03-20 00:00:00+00:00
+[2023-03-21T15:34:35.733+0000] {standard_task_runner.py:55} INFO - Started process 3490 to run task
+[2023-03-21T15:34:35.751+0000] {standard_task_runner.py:82} INFO - Running: ['***', 'tasks', 'run', 'batch_pipeline', 'create_tables', 'scheduled__2023-03-20T00:00:00+00:00', '--job-id', '133', '--raw', '--subdir', 'DAGS_FOLDER/load_csv.py', '--cfg-path', '/tmp/tmp2nsxvnl_']
+[2023-03-21T15:34:35.759+0000] {standard_task_runner.py:83} INFO - Job 133: Subtask create_tables
+[2023-03-21T15:34:36.077+0000] {task_command.py:388} INFO - Running <TaskInstance: batch_pipeline.create_tables scheduled__2023-03-20T00:00:00+00:00 [running]> on host 070f7bf9e1a1
+[2023-03-21T15:34:36.212+0000] {abstractoperator.py:615} ERROR - Exception rendering Jinja template for task 'create_tables', field 'sql'. Template: 'create_tables.sql'
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/abstractoperator.py", line 607, in _do_render_template_fields
+    seen_oids,
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/abstractoperator.py", line 659, in render_template
+    template = jinja_env.get_template(value)
+  File "/home/airflow/.local/lib/python3.7/site-packages/jinja2/environment.py", line 1010, in get_template
+    return self._load_template(name, globals)
+  File "/home/airflow/.local/lib/python3.7/site-packages/jinja2/environment.py", line 969, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "/home/airflow/.local/lib/python3.7/site-packages/jinja2/loaders.py", line 126, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "/home/airflow/.local/lib/python3.7/site-packages/jinja2/loaders.py", line 218, in get_source
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: create_tables.sql
+[2023-03-21T15:34:36.217+0000] {taskinstance.py:1775} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/taskinstance.py", line 1377, in _run_raw_task
+    self._execute_task_with_callbacks(context, test_mode)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/taskinstance.py", line 1495, in _execute_task_with_callbacks
+    task_orig = self.render_templates(context=context)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/taskinstance.py", line 2122, in render_templates
+    original_task.render_template_fields(context)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/baseoperator.py", line 1179, in render_template_fields
+    self._do_render_template_fields(self, self.template_fields, context, jinja_env, set())
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/session.py", line 75, in wrapper
+    return func(*args, session=session, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/abstractoperator.py", line 607, in _do_render_template_fields
+    seen_oids,
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/abstractoperator.py", line 659, in render_template
+    template = jinja_env.get_template(value)
+  File "/home/airflow/.local/lib/python3.7/site-packages/jinja2/environment.py", line 1010, in get_template
+    return self._load_template(name, globals)
+  File "/home/airflow/.local/lib/python3.7/site-packages/jinja2/environment.py", line 969, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "/home/airflow/.local/lib/python3.7/site-packages/jinja2/loaders.py", line 126, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "/home/airflow/.local/lib/python3.7/site-packages/jinja2/loaders.py", line 218, in get_source
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: create_tables.sql
+[2023-03-21T15:34:36.254+0000] {taskinstance.py:1326} INFO - Marking task as FAILED. dag_id=batch_pipeline, task_id=create_tables, execution_date=20230320T000000, start_date=20230321T153435, end_date=20230321T153436
+[2023-03-21T15:34:36.297+0000] {standard_task_runner.py:105} ERROR - Failed to execute job 133 for task create_tables (create_tables.sql; 3490)
+[2023-03-21T15:34:36.366+0000] {local_task_job.py:212} INFO - Task exited with return code 1
+[2023-03-21T15:34:36.477+0000] {taskinstance.py:2585} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2023-03-21T15:53:14.192+0000] {taskinstance.py:1084} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: batch_pipeline.create_tables scheduled__2023-03-20T00:00:00+00:00 [queued]>
+[2023-03-21T15:53:14.220+0000] {taskinstance.py:1084} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: batch_pipeline.create_tables scheduled__2023-03-20T00:00:00+00:00 [queued]>
+[2023-03-21T15:53:14.223+0000] {taskinstance.py:1282} INFO - 
+--------------------------------------------------------------------------------
+[2023-03-21T15:53:14.226+0000] {taskinstance.py:1283} INFO - Starting attempt 4 of 4
+[2023-03-21T15:53:14.228+0000] {taskinstance.py:1284} INFO - 
+--------------------------------------------------------------------------------
+[2023-03-21T15:53:14.278+0000] {taskinstance.py:1303} INFO - Executing <Task(PostgresOperator): create_tables> on 2023-03-20 00:00:00+00:00
+[2023-03-21T15:53:14.298+0000] {standard_task_runner.py:55} INFO - Started process 3841 to run task
+[2023-03-21T15:53:14.315+0000] {standard_task_runner.py:82} INFO - Running: ['***', 'tasks', 'run', 'batch_pipeline', 'create_tables', 'scheduled__2023-03-20T00:00:00+00:00', '--job-id', '157', '--raw', '--subdir', 'DAGS_FOLDER/batch_pipeline.py', '--cfg-path', '/tmp/tmpy0hpvff7']
+[2023-03-21T15:53:14.320+0000] {standard_task_runner.py:83} INFO - Job 157: Subtask create_tables
+[2023-03-21T15:53:14.671+0000] {task_command.py:388} INFO - Running <TaskInstance: batch_pipeline.create_tables scheduled__2023-03-20T00:00:00+00:00 [running]> on host 070f7bf9e1a1
+[2023-03-21T15:53:14.870+0000] {abstractoperator.py:615} ERROR - Exception rendering Jinja template for task 'create_tables', field 'sql'. Template: 'create_tables.sql'
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/abstractoperator.py", line 607, in _do_render_template_fields
+    seen_oids,
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/abstractoperator.py", line 659, in render_template
+    template = jinja_env.get_template(value)
+  File "/home/airflow/.local/lib/python3.7/site-packages/jinja2/environment.py", line 1010, in get_template
+    return self._load_template(name, globals)
+  File "/home/airflow/.local/lib/python3.7/site-packages/jinja2/environment.py", line 969, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "/home/airflow/.local/lib/python3.7/site-packages/jinja2/loaders.py", line 126, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "/home/airflow/.local/lib/python3.7/site-packages/jinja2/loaders.py", line 218, in get_source
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: create_tables.sql
+[2023-03-21T15:53:14.874+0000] {taskinstance.py:1775} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/taskinstance.py", line 1377, in _run_raw_task
+    self._execute_task_with_callbacks(context, test_mode)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/taskinstance.py", line 1495, in _execute_task_with_callbacks
+    task_orig = self.render_templates(context=context)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/taskinstance.py", line 2122, in render_templates
+    original_task.render_template_fields(context)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/baseoperator.py", line 1179, in render_template_fields
+    self._do_render_template_fields(self, self.template_fields, context, jinja_env, set())
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/session.py", line 75, in wrapper
+    return func(*args, session=session, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/abstractoperator.py", line 607, in _do_render_template_fields
+    seen_oids,
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/abstractoperator.py", line 659, in render_template
+    template = jinja_env.get_template(value)
+  File "/home/airflow/.local/lib/python3.7/site-packages/jinja2/environment.py", line 1010, in get_template
+    return self._load_template(name, globals)
+  File "/home/airflow/.local/lib/python3.7/site-packages/jinja2/environment.py", line 969, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "/home/airflow/.local/lib/python3.7/site-packages/jinja2/loaders.py", line 126, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "/home/airflow/.local/lib/python3.7/site-packages/jinja2/loaders.py", line 218, in get_source
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: create_tables.sql
+[2023-03-21T15:53:14.910+0000] {taskinstance.py:1326} INFO - Marking task as FAILED. dag_id=batch_pipeline, task_id=create_tables, execution_date=20230320T000000, start_date=20230321T155314, end_date=20230321T155314
+[2023-03-21T15:53:14.968+0000] {standard_task_runner.py:105} ERROR - Failed to execute job 157 for task create_tables (create_tables.sql; 3841)
+[2023-03-21T15:53:15.037+0000] {local_task_job.py:212} INFO - Task exited with return code 1
+[2023-03-21T15:53:15.172+0000] {taskinstance.py:2585} INFO - 0 downstream tasks scheduled from follow-on schedule check

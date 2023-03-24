@@ -1,0 +1,128 @@
+[2023-03-22T01:34:28.326+0000] {taskinstance.py:1084} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: batch_pipeline.create_tables scheduled__2023-03-21T00:00:00+00:00 [queued]>
+[2023-03-22T01:34:28.344+0000] {taskinstance.py:1084} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: batch_pipeline.create_tables scheduled__2023-03-21T00:00:00+00:00 [queued]>
+[2023-03-22T01:34:28.345+0000] {taskinstance.py:1282} INFO - 
+--------------------------------------------------------------------------------
+[2023-03-22T01:34:28.347+0000] {taskinstance.py:1283} INFO - Starting attempt 2 of 2
+[2023-03-22T01:34:28.349+0000] {taskinstance.py:1284} INFO - 
+--------------------------------------------------------------------------------
+[2023-03-22T01:34:28.378+0000] {taskinstance.py:1303} INFO - Executing <Task(PostgresOperator): create_tables> on 2023-03-21 00:00:00+00:00
+[2023-03-22T01:34:28.389+0000] {standard_task_runner.py:55} INFO - Started process 282 to run task
+[2023-03-22T01:34:28.397+0000] {standard_task_runner.py:82} INFO - Running: ['***', 'tasks', 'run', 'batch_pipeline', 'create_tables', 'scheduled__2023-03-21T00:00:00+00:00', '--job-id', '175', '--raw', '--subdir', 'DAGS_FOLDER/batch_pipeline.py', '--cfg-path', '/tmp/tmprfi3sb91']
+[2023-03-22T01:34:28.399+0000] {standard_task_runner.py:83} INFO - Job 175: Subtask create_tables
+[2023-03-22T01:34:28.522+0000] {task_command.py:388} INFO - Running <TaskInstance: batch_pipeline.create_tables scheduled__2023-03-21T00:00:00+00:00 [running]> on host 070f7bf9e1a1
+[2023-03-22T01:34:28.646+0000] {taskinstance.py:1511} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=Pedrosa
+AIRFLOW_CTX_DAG_ID=batch_pipeline
+AIRFLOW_CTX_TASK_ID=create_tables
+AIRFLOW_CTX_EXECUTION_DATE=2023-03-21T00:00:00+00:00
+AIRFLOW_CTX_TRY_NUMBER=2
+AIRFLOW_CTX_DAG_RUN_ID=scheduled__2023-03-21T00:00:00+00:00
+[2023-03-22T01:34:28.652+0000] {sql.py:254} INFO - Executing: CREATE TABLE IF NOT EXISTS orders (
+    order_id smallint NOT NULL,
+    customer_id bpchar,
+    employee_id smallint,
+    order_date date,
+    required_date date,
+    shipped_date date,
+    ship_via smallint,
+    freight real,
+    ship_name character varying(40),
+    ship_address character varying(60),
+    ship_city character varying(15),
+    ship_region character varying(15),
+    ship_postal_code character varying(10),
+    ship_country character varying(15),
+
+    CONSTRAINT pk_orders PRIMARY KEY (order_id)
+);
+
+CREATE TABLE IF NOT EXISTS order_details (
+    order_id int REFERENCES orders (order_id),
+    product_id int,
+    unit_price real,
+    quantity int,
+    discount real
+);
+[2023-03-22T01:34:28.699+0000] {taskinstance.py:1775} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/providers/common/sql/operators/sql.py", line 255, in execute
+    hook = self.get_db_hook()
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/providers/common/sql/operators/sql.py", line 179, in get_db_hook
+    return self._hook
+  File "/home/airflow/.local/lib/python3.7/site-packages/cached_property.py", line 36, in __get__
+    value = obj.__dict__[self.func.__name__] = self.func(obj)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/providers/common/sql/operators/sql.py", line 141, in _hook
+    conn = BaseHook.get_connection(self.conn_id)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/hooks/base.py", line 72, in get_connection
+    conn = Connection.get_connection_from_secrets(conn_id)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/connection.py", line 435, in get_connection_from_secrets
+    raise AirflowNotFoundException(f"The conn_id `{conn_id}` isn't defined")
+airflow.exceptions.AirflowNotFoundException: The conn_id `postgres_default` isn't defined
+[2023-03-22T01:34:28.716+0000] {taskinstance.py:1326} INFO - Marking task as FAILED. dag_id=batch_pipeline, task_id=create_tables, execution_date=20230321T000000, start_date=20230322T013428, end_date=20230322T013428
+[2023-03-22T01:34:28.745+0000] {standard_task_runner.py:105} ERROR - Failed to execute job 175 for task create_tables (The conn_id `postgres_default` isn't defined; 282)
+[2023-03-22T01:34:28.772+0000] {local_task_job.py:212} INFO - Task exited with return code 1
+[2023-03-22T01:34:28.817+0000] {taskinstance.py:2585} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2023-03-22T02:45:57.088+0000] {taskinstance.py:1084} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: batch_pipeline.create_tables scheduled__2023-03-21T00:00:00+00:00 [queued]>
+[2023-03-22T02:45:57.108+0000] {taskinstance.py:1084} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: batch_pipeline.create_tables scheduled__2023-03-21T00:00:00+00:00 [queued]>
+[2023-03-22T02:45:57.110+0000] {taskinstance.py:1282} INFO - 
+--------------------------------------------------------------------------------
+[2023-03-22T02:45:57.114+0000] {taskinstance.py:1283} INFO - Starting attempt 2 of 2
+[2023-03-22T02:45:57.116+0000] {taskinstance.py:1284} INFO - 
+--------------------------------------------------------------------------------
+[2023-03-22T02:45:57.145+0000] {taskinstance.py:1303} INFO - Executing <Task(PostgresOperator): create_tables> on 2023-03-21 00:00:00+00:00
+[2023-03-22T02:45:57.156+0000] {standard_task_runner.py:55} INFO - Started process 495 to run task
+[2023-03-22T02:45:57.168+0000] {standard_task_runner.py:82} INFO - Running: ['***', 'tasks', 'run', 'batch_pipeline', 'create_tables', 'scheduled__2023-03-21T00:00:00+00:00', '--job-id', '196', '--raw', '--subdir', 'DAGS_FOLDER/batch_pipeline.py', '--cfg-path', '/tmp/tmpfppfa4ha']
+[2023-03-22T02:45:57.171+0000] {standard_task_runner.py:83} INFO - Job 196: Subtask create_tables
+[2023-03-22T02:45:57.301+0000] {task_command.py:388} INFO - Running <TaskInstance: batch_pipeline.create_tables scheduled__2023-03-21T00:00:00+00:00 [running]> on host 070f7bf9e1a1
+[2023-03-22T02:45:57.484+0000] {taskinstance.py:1511} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=Pedrosa
+AIRFLOW_CTX_DAG_ID=batch_pipeline
+AIRFLOW_CTX_TASK_ID=create_tables
+AIRFLOW_CTX_EXECUTION_DATE=2023-03-21T00:00:00+00:00
+AIRFLOW_CTX_TRY_NUMBER=2
+AIRFLOW_CTX_DAG_RUN_ID=scheduled__2023-03-21T00:00:00+00:00
+[2023-03-22T02:45:57.490+0000] {sql.py:254} INFO - Executing: CREATE TABLE IF NOT EXISTS orders (
+    order_id smallint NOT NULL,
+    customer_id bpchar,
+    employee_id smallint,
+    order_date date,
+    required_date date,
+    shipped_date date,
+    ship_via smallint,
+    freight real,
+    ship_name character varying(40),
+    ship_address character varying(60),
+    ship_city character varying(15),
+    ship_region character varying(15),
+    ship_postal_code character varying(10),
+    ship_country character varying(15),
+
+    CONSTRAINT pk_orders PRIMARY KEY (order_id)
+);
+
+CREATE TABLE IF NOT EXISTS order_details (
+    order_id int REFERENCES orders (order_id),
+    product_id int,
+    unit_price real,
+    quantity int,
+    discount real
+);
+[2023-03-22T02:45:57.556+0000] {taskinstance.py:1775} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/providers/common/sql/operators/sql.py", line 255, in execute
+    hook = self.get_db_hook()
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/providers/common/sql/operators/sql.py", line 179, in get_db_hook
+    return self._hook
+  File "/home/airflow/.local/lib/python3.7/site-packages/cached_property.py", line 36, in __get__
+    value = obj.__dict__[self.func.__name__] = self.func(obj)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/providers/common/sql/operators/sql.py", line 141, in _hook
+    conn = BaseHook.get_connection(self.conn_id)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/hooks/base.py", line 72, in get_connection
+    conn = Connection.get_connection_from_secrets(conn_id)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/connection.py", line 435, in get_connection_from_secrets
+    raise AirflowNotFoundException(f"The conn_id `{conn_id}` isn't defined")
+airflow.exceptions.AirflowNotFoundException: The conn_id `conn_postgres` isn't defined
+[2023-03-22T02:45:57.578+0000] {taskinstance.py:1326} INFO - Marking task as FAILED. dag_id=batch_pipeline, task_id=create_tables, execution_date=20230321T000000, start_date=20230322T024557, end_date=20230322T024557
+[2023-03-22T02:45:57.618+0000] {standard_task_runner.py:105} ERROR - Failed to execute job 196 for task create_tables (The conn_id `conn_postgres` isn't defined; 495)
+[2023-03-22T02:45:57.672+0000] {local_task_job.py:212} INFO - Task exited with return code 1
+[2023-03-22T02:45:57.712+0000] {taskinstance.py:2585} INFO - 0 downstream tasks scheduled from follow-on schedule check

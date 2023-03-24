@@ -1,0 +1,32 @@
+[2023-03-22T04:41:31.729+0000] {taskinstance.py:1084} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: csv_json_to_postgres.extract_json_files scheduled__2023-03-21T00:00:00+00:00 [queued]>
+[2023-03-22T04:41:31.925+0000] {taskinstance.py:1084} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: csv_json_to_postgres.extract_json_files scheduled__2023-03-21T00:00:00+00:00 [queued]>
+[2023-03-22T04:41:31.930+0000] {taskinstance.py:1282} INFO - 
+--------------------------------------------------------------------------------
+[2023-03-22T04:41:31.933+0000] {taskinstance.py:1283} INFO - Starting attempt 1 of 2
+[2023-03-22T04:41:31.942+0000] {taskinstance.py:1284} INFO - 
+--------------------------------------------------------------------------------
+[2023-03-22T04:41:32.100+0000] {taskinstance.py:1303} INFO - Executing <Task(PythonOperator): extract_json_files> on 2023-03-21 00:00:00+00:00
+[2023-03-22T04:41:32.174+0000] {standard_task_runner.py:82} INFO - Running: ['***', 'tasks', 'run', 'csv_json_to_postgres', 'extract_json_files', 'scheduled__2023-03-21T00:00:00+00:00', '--job-id', '198', '--raw', '--subdir', 'DAGS_FOLDER/***_etl.py', '--cfg-path', '/tmp/tmp5uu_kff1']
+[2023-03-22T04:41:32.194+0000] {standard_task_runner.py:83} INFO - Job 198: Subtask extract_json_files
+[2023-03-22T04:41:32.159+0000] {standard_task_runner.py:55} INFO - Started process 2360 to run task
+[2023-03-22T04:41:32.735+0000] {task_command.py:388} INFO - Running <TaskInstance: csv_json_to_postgres.extract_json_files scheduled__2023-03-21T00:00:00+00:00 [running]> on host 070f7bf9e1a1
+[2023-03-22T04:41:33.252+0000] {taskinstance.py:1511} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=Sanvi
+AIRFLOW_CTX_DAG_ID=csv_json_to_postgres
+AIRFLOW_CTX_TASK_ID=extract_json_files
+AIRFLOW_CTX_EXECUTION_DATE=2023-03-21T00:00:00+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=scheduled__2023-03-21T00:00:00+00:00
+[2023-03-22T04:41:33.290+0000] {taskinstance.py:1775} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/operators/python.py", line 175, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/operators/python.py", line 192, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/airflow_etl.py", line 35, in extract_json_files
+    with open(f'airflow-fp/data/json/yelp_academic_dataset_business1.json') as f:
+FileNotFoundError: [Errno 2] No such file or directory: 'airflow-fp/data/json/yelp_academic_dataset_business1.json'
+[2023-03-22T04:41:33.342+0000] {taskinstance.py:1326} INFO - Marking task as UP_FOR_RETRY. dag_id=csv_json_to_postgres, task_id=extract_json_files, execution_date=20230321T000000, start_date=20230322T044131, end_date=20230322T044133
+[2023-03-22T04:41:33.392+0000] {standard_task_runner.py:105} ERROR - Failed to execute job 198 for task extract_json_files ([Errno 2] No such file or directory: 'airflow-fp/data/json/yelp_academic_dataset_business1.json'; 2360)
+[2023-03-22T04:41:33.508+0000] {local_task_job.py:212} INFO - Task exited with return code 1
+[2023-03-22T04:41:33.646+0000] {taskinstance.py:2585} INFO - 0 downstream tasks scheduled from follow-on schedule check

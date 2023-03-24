@@ -1,0 +1,26 @@
+[2023-03-21T13:11:44.649+0000] {taskinstance.py:1084} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: batch_pipeline.extract_database_tables manual__2023-03-21T12:47:20.072089+00:00 [queued]>
+[2023-03-21T13:11:44.715+0000] {taskinstance.py:1084} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: batch_pipeline.extract_database_tables manual__2023-03-21T12:47:20.072089+00:00 [queued]>
+[2023-03-21T13:11:44.719+0000] {taskinstance.py:1282} INFO - 
+--------------------------------------------------------------------------------
+[2023-03-21T13:11:44.722+0000] {taskinstance.py:1283} INFO - Starting attempt 3 of 3
+[2023-03-21T13:11:44.725+0000] {taskinstance.py:1284} INFO - 
+--------------------------------------------------------------------------------
+[2023-03-21T13:11:44.892+0000] {taskinstance.py:1303} INFO - Executing <Task(PythonOperator): extract_database_tables> on 2023-03-21 12:47:20.072089+00:00
+[2023-03-21T13:11:44.932+0000] {standard_task_runner.py:55} INFO - Started process 873 to run task
+[2023-03-21T13:11:44.965+0000] {standard_task_runner.py:82} INFO - Running: ['***', 'tasks', 'run', 'batch_pipeline', 'extract_database_tables', 'manual__2023-03-21T12:47:20.072089+00:00', '--job-id', '22', '--raw', '--subdir', 'DAGS_FOLDER/load_csv.py', '--cfg-path', '/tmp/tmp6jpvxda6']
+[2023-03-21T13:11:44.978+0000] {standard_task_runner.py:83} INFO - Job 22: Subtask extract_database_tables
+[2023-03-21T13:11:45.407+0000] {task_command.py:388} INFO - Running <TaskInstance: batch_pipeline.extract_database_tables manual__2023-03-21T12:47:20.072089+00:00 [running]> on host 070f7bf9e1a1
+[2023-03-21T13:11:46.242+0000] {taskinstance.py:1511} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=Pedrosa
+AIRFLOW_CTX_DAG_ID=batch_pipeline
+AIRFLOW_CTX_TASK_ID=extract_database_tables
+AIRFLOW_CTX_EXECUTION_DATE=2023-03-21T12:47:20.072089+00:00
+AIRFLOW_CTX_TRY_NUMBER=3
+AIRFLOW_CTX_DAG_RUN_ID=manual__2023-03-21T12:47:20.072089+00:00
+[2023-03-21T13:11:46.397+0000] {logging_mixin.py:137} INFO - Erro: (psycopg2.OperationalError) connection to server at "host.docker.internal" (192.168.65.2), port 5432 failed: FATAL:  password authentication failed for user "postgres"
+
+(Background on this error at: https://sqlalche.me/e/14/e3q8)
+[2023-03-21T13:11:46.402+0000] {python.py:177} INFO - Done. Returned value was: None
+[2023-03-21T13:11:46.446+0000] {taskinstance.py:1326} INFO - Marking task as SUCCESS. dag_id=batch_pipeline, task_id=extract_database_tables, execution_date=20230321T124720, start_date=20230321T131144, end_date=20230321T131146
+[2023-03-21T13:11:46.592+0000] {local_task_job.py:212} INFO - Task exited with return code 0
+[2023-03-21T13:11:46.837+0000] {taskinstance.py:2585} INFO - 1 downstream tasks scheduled from follow-on schedule check

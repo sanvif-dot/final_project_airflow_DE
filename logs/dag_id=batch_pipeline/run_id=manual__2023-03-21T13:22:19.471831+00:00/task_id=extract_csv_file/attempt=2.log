@@ -1,0 +1,23 @@
+[2023-03-21T13:24:01.378+0000] {taskinstance.py:1084} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: batch_pipeline.extract_csv_file manual__2023-03-21T13:22:19.471831+00:00 [queued]>
+[2023-03-21T13:24:01.417+0000] {taskinstance.py:1084} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: batch_pipeline.extract_csv_file manual__2023-03-21T13:22:19.471831+00:00 [queued]>
+[2023-03-21T13:24:01.420+0000] {taskinstance.py:1282} INFO - 
+--------------------------------------------------------------------------------
+[2023-03-21T13:24:01.423+0000] {taskinstance.py:1283} INFO - Starting attempt 2 of 2
+[2023-03-21T13:24:01.425+0000] {taskinstance.py:1284} INFO - 
+--------------------------------------------------------------------------------
+[2023-03-21T13:24:01.466+0000] {taskinstance.py:1303} INFO - Executing <Task(PythonOperator): extract_csv_file> on 2023-03-21 13:22:19.471831+00:00
+[2023-03-21T13:24:01.477+0000] {standard_task_runner.py:55} INFO - Started process 1140 to run task
+[2023-03-21T13:24:01.495+0000] {standard_task_runner.py:82} INFO - Running: ['***', 'tasks', 'run', 'batch_pipeline', 'extract_csv_file', 'manual__2023-03-21T13:22:19.471831+00:00', '--job-id', '47', '--raw', '--subdir', 'DAGS_FOLDER/batch_pipeline.py', '--cfg-path', '/tmp/tmpexqq35vy']
+[2023-03-21T13:24:01.498+0000] {standard_task_runner.py:83} INFO - Job 47: Subtask extract_csv_file
+[2023-03-21T13:24:01.648+0000] {task_command.py:388} INFO - Running <TaskInstance: batch_pipeline.extract_csv_file manual__2023-03-21T13:22:19.471831+00:00 [running]> on host 070f7bf9e1a1
+[2023-03-21T13:24:01.822+0000] {taskinstance.py:1511} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=Pedrosa
+AIRFLOW_CTX_DAG_ID=batch_pipeline
+AIRFLOW_CTX_TASK_ID=extract_csv_file
+AIRFLOW_CTX_EXECUTION_DATE=2023-03-21T13:22:19.471831+00:00
+AIRFLOW_CTX_TRY_NUMBER=2
+AIRFLOW_CTX_DAG_RUN_ID=manual__2023-03-21T13:22:19.471831+00:00
+[2023-03-21T13:24:01.908+0000] {python.py:177} INFO - Done. Returned value was: None
+[2023-03-21T13:24:01.935+0000] {taskinstance.py:1326} INFO - Marking task as SUCCESS. dag_id=batch_pipeline, task_id=extract_csv_file, execution_date=20230321T132219, start_date=20230321T132401, end_date=20230321T132401
+[2023-03-21T13:24:02.085+0000] {local_task_job.py:212} INFO - Task exited with return code 0
+[2023-03-21T13:24:02.258+0000] {taskinstance.py:2585} INFO - 1 downstream tasks scheduled from follow-on schedule check

@@ -1,0 +1,200 @@
+[2023-03-22T05:05:33.944+0000] {processor.py:153} INFO - Started process (PID=16923) to work on /opt/airflow/dags/etl_climate.py
+[2023-03-22T05:05:34.019+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/etl_climate.py for tasks to queue
+[2023-03-22T05:05:34.039+0000] {logging_mixin.py:137} INFO - [2023-03-22T05:05:34.038+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/etl_climate.py
+[2023-03-22T05:05:38.385+0000] {processor.py:753} INFO - DAG(s) dict_keys(['csv_to_postgres']) retrieved from /opt/airflow/dags/etl_climate.py
+[2023-03-22T05:05:39.940+0000] {logging_mixin.py:137} INFO - [2023-03-22T05:05:39.939+0000] {manager.py:504} INFO - Created Permission View: can delete on DAG:csv_to_postgres
+[2023-03-22T05:05:40.095+0000] {logging_mixin.py:137} INFO - [2023-03-22T05:05:40.087+0000] {manager.py:504} INFO - Created Permission View: can read on DAG:csv_to_postgres
+[2023-03-22T05:05:40.206+0000] {logging_mixin.py:137} INFO - [2023-03-22T05:05:40.205+0000] {manager.py:504} INFO - Created Permission View: can edit on DAG:csv_to_postgres
+[2023-03-22T05:05:40.228+0000] {logging_mixin.py:137} INFO - [2023-03-22T05:05:40.227+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T05:05:40.479+0000] {logging_mixin.py:137} INFO - [2023-03-22T05:05:40.467+0000] {dag.py:2714} INFO - Creating ORM DAG for csv_to_postgres
+[2023-03-22T05:05:40.542+0000] {logging_mixin.py:137} INFO - [2023-03-22T05:05:40.542+0000] {dag.py:3444} INFO - Setting next_dagrun for csv_to_postgres to None, run_after=None
+[2023-03-22T05:05:40.614+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/etl_climate.py took 6.767 seconds
+[2023-03-22T05:06:11.430+0000] {processor.py:153} INFO - Started process (PID=16986) to work on /opt/airflow/dags/etl_climate.py
+[2023-03-22T05:06:11.435+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/etl_climate.py for tasks to queue
+[2023-03-22T05:06:11.438+0000] {logging_mixin.py:137} INFO - [2023-03-22T05:06:11.438+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/etl_climate.py
+[2023-03-22T05:06:12.203+0000] {processor.py:753} INFO - DAG(s) dict_keys(['csv_to_postgres']) retrieved from /opt/airflow/dags/etl_climate.py
+[2023-03-22T05:06:12.244+0000] {logging_mixin.py:137} INFO - [2023-03-22T05:06:12.243+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T05:06:12.286+0000] {logging_mixin.py:137} INFO - [2023-03-22T05:06:12.286+0000] {dag.py:3444} INFO - Setting next_dagrun for csv_to_postgres to None, run_after=None
+[2023-03-22T05:06:12.321+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/etl_climate.py took 0.904 seconds
+[2023-03-22T05:06:42.488+0000] {processor.py:153} INFO - Started process (PID=17047) to work on /opt/airflow/dags/etl_climate.py
+[2023-03-22T05:06:42.492+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/etl_climate.py for tasks to queue
+[2023-03-22T05:06:42.495+0000] {logging_mixin.py:137} INFO - [2023-03-22T05:06:42.495+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/etl_climate.py
+[2023-03-22T05:06:43.141+0000] {processor.py:753} INFO - DAG(s) dict_keys(['csv_to_postgres']) retrieved from /opt/airflow/dags/etl_climate.py
+[2023-03-22T05:06:43.200+0000] {logging_mixin.py:137} INFO - [2023-03-22T05:06:43.200+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T05:06:43.248+0000] {logging_mixin.py:137} INFO - [2023-03-22T05:06:43.248+0000] {dag.py:3444} INFO - Setting next_dagrun for csv_to_postgres to None, run_after=None
+[2023-03-22T05:06:43.283+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/etl_climate.py took 0.801 seconds
+[2023-03-22T05:07:13.773+0000] {processor.py:153} INFO - Started process (PID=17107) to work on /opt/airflow/dags/etl_climate.py
+[2023-03-22T05:07:13.790+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/etl_climate.py for tasks to queue
+[2023-03-22T05:07:13.809+0000] {logging_mixin.py:137} INFO - [2023-03-22T05:07:13.803+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/etl_climate.py
+[2023-03-22T05:07:15.432+0000] {processor.py:753} INFO - DAG(s) dict_keys(['csv_to_postgres']) retrieved from /opt/airflow/dags/etl_climate.py
+[2023-03-22T05:07:15.520+0000] {logging_mixin.py:137} INFO - [2023-03-22T05:07:15.519+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T05:07:15.577+0000] {logging_mixin.py:137} INFO - [2023-03-22T05:07:15.577+0000] {dag.py:3444} INFO - Setting next_dagrun for csv_to_postgres to None, run_after=None
+[2023-03-22T05:07:15.690+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/etl_climate.py took 1.944 seconds
+[2023-03-22T05:07:46.564+0000] {processor.py:153} INFO - Started process (PID=17175) to work on /opt/airflow/dags/etl_climate.py
+[2023-03-22T05:07:46.567+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/etl_climate.py for tasks to queue
+[2023-03-22T05:07:46.575+0000] {logging_mixin.py:137} INFO - [2023-03-22T05:07:46.575+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/etl_climate.py
+[2023-03-22T05:07:47.322+0000] {processor.py:753} INFO - DAG(s) dict_keys(['csv_to_postgres']) retrieved from /opt/airflow/dags/etl_climate.py
+[2023-03-22T05:07:47.368+0000] {logging_mixin.py:137} INFO - [2023-03-22T05:07:47.367+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T05:07:47.413+0000] {logging_mixin.py:137} INFO - [2023-03-22T05:07:47.413+0000] {dag.py:3444} INFO - Setting next_dagrun for csv_to_postgres to None, run_after=None
+[2023-03-22T05:07:47.451+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/etl_climate.py took 0.903 seconds
+[2023-03-22T05:08:17.551+0000] {processor.py:153} INFO - Started process (PID=17235) to work on /opt/airflow/dags/etl_climate.py
+[2023-03-22T05:08:17.557+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/etl_climate.py for tasks to queue
+[2023-03-22T05:08:17.562+0000] {logging_mixin.py:137} INFO - [2023-03-22T05:08:17.561+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/etl_climate.py
+[2023-03-22T05:08:18.338+0000] {processor.py:753} INFO - DAG(s) dict_keys(['csv_to_postgres']) retrieved from /opt/airflow/dags/etl_climate.py
+[2023-03-22T05:08:18.384+0000] {logging_mixin.py:137} INFO - [2023-03-22T05:08:18.383+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T05:08:18.439+0000] {logging_mixin.py:137} INFO - [2023-03-22T05:08:18.438+0000] {dag.py:3444} INFO - Setting next_dagrun for csv_to_postgres to None, run_after=None
+[2023-03-22T05:08:18.487+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/etl_climate.py took 0.948 seconds
+[2023-03-22T05:08:49.233+0000] {processor.py:153} INFO - Started process (PID=17294) to work on /opt/airflow/dags/etl_climate.py
+[2023-03-22T05:08:49.240+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/etl_climate.py for tasks to queue
+[2023-03-22T05:08:49.243+0000] {logging_mixin.py:137} INFO - [2023-03-22T05:08:49.243+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/etl_climate.py
+[2023-03-22T05:08:50.170+0000] {processor.py:753} INFO - DAG(s) dict_keys(['csv_to_postgres']) retrieved from /opt/airflow/dags/etl_climate.py
+[2023-03-22T05:08:50.235+0000] {logging_mixin.py:137} INFO - [2023-03-22T05:08:50.233+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T05:08:50.296+0000] {logging_mixin.py:137} INFO - [2023-03-22T05:08:50.296+0000] {dag.py:3444} INFO - Setting next_dagrun for csv_to_postgres to None, run_after=None
+[2023-03-22T05:08:50.340+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/etl_climate.py took 1.117 seconds
+[2023-03-22T05:09:20.892+0000] {processor.py:153} INFO - Started process (PID=17355) to work on /opt/airflow/dags/etl_climate.py
+[2023-03-22T05:09:20.897+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/etl_climate.py for tasks to queue
+[2023-03-22T05:09:20.902+0000] {logging_mixin.py:137} INFO - [2023-03-22T05:09:20.902+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/etl_climate.py
+[2023-03-22T05:09:22.068+0000] {processor.py:753} INFO - DAG(s) dict_keys(['csv_to_postgres']) retrieved from /opt/airflow/dags/etl_climate.py
+[2023-03-22T05:09:22.122+0000] {logging_mixin.py:137} INFO - [2023-03-22T05:09:22.121+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T05:09:22.258+0000] {logging_mixin.py:137} INFO - [2023-03-22T05:09:22.257+0000] {dag.py:3444} INFO - Setting next_dagrun for csv_to_postgres to None, run_after=None
+[2023-03-22T05:09:22.357+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/etl_climate.py took 1.490 seconds
+[2023-03-22T05:09:52.521+0000] {processor.py:153} INFO - Started process (PID=17414) to work on /opt/airflow/dags/etl_climate.py
+[2023-03-22T05:09:52.526+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/etl_climate.py for tasks to queue
+[2023-03-22T05:09:52.530+0000] {logging_mixin.py:137} INFO - [2023-03-22T05:09:52.530+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/etl_climate.py
+[2023-03-22T05:09:53.256+0000] {processor.py:753} INFO - DAG(s) dict_keys(['csv_to_postgres']) retrieved from /opt/airflow/dags/etl_climate.py
+[2023-03-22T05:09:53.298+0000] {logging_mixin.py:137} INFO - [2023-03-22T05:09:53.297+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T05:09:53.348+0000] {logging_mixin.py:137} INFO - [2023-03-22T05:09:53.347+0000] {dag.py:3444} INFO - Setting next_dagrun for csv_to_postgres to None, run_after=None
+[2023-03-22T05:09:53.383+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/etl_climate.py took 0.874 seconds
+[2023-03-22T05:10:24.576+0000] {processor.py:153} INFO - Started process (PID=17474) to work on /opt/airflow/dags/etl_climate.py
+[2023-03-22T05:10:24.586+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/etl_climate.py for tasks to queue
+[2023-03-22T05:10:24.593+0000] {logging_mixin.py:137} INFO - [2023-03-22T05:10:24.593+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/etl_climate.py
+[2023-03-22T05:10:26.973+0000] {processor.py:753} INFO - DAG(s) dict_keys(['csv_to_postgres']) retrieved from /opt/airflow/dags/etl_climate.py
+[2023-03-22T05:10:27.149+0000] {logging_mixin.py:137} INFO - [2023-03-22T05:10:27.148+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T05:10:27.259+0000] {logging_mixin.py:137} INFO - [2023-03-22T05:10:27.258+0000] {dag.py:3444} INFO - Setting next_dagrun for csv_to_postgres to None, run_after=None
+[2023-03-22T05:10:27.354+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/etl_climate.py took 2.861 seconds
+[2023-03-22T05:10:57.730+0000] {processor.py:153} INFO - Started process (PID=17535) to work on /opt/airflow/dags/etl_climate.py
+[2023-03-22T05:10:57.735+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/etl_climate.py for tasks to queue
+[2023-03-22T05:10:57.738+0000] {logging_mixin.py:137} INFO - [2023-03-22T05:10:57.738+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/etl_climate.py
+[2023-03-22T05:10:58.682+0000] {processor.py:753} INFO - DAG(s) dict_keys(['csv_to_postgres']) retrieved from /opt/airflow/dags/etl_climate.py
+[2023-03-22T05:10:58.733+0000] {logging_mixin.py:137} INFO - [2023-03-22T05:10:58.732+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T05:10:58.796+0000] {logging_mixin.py:137} INFO - [2023-03-22T05:10:58.796+0000] {dag.py:3444} INFO - Setting next_dagrun for csv_to_postgres to None, run_after=None
+[2023-03-22T05:10:58.833+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/etl_climate.py took 1.118 seconds
+[2023-03-22T05:11:29.103+0000] {processor.py:153} INFO - Started process (PID=17597) to work on /opt/airflow/dags/etl_climate.py
+[2023-03-22T05:11:29.107+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/etl_climate.py for tasks to queue
+[2023-03-22T05:11:29.114+0000] {logging_mixin.py:137} INFO - [2023-03-22T05:11:29.114+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/etl_climate.py
+[2023-03-22T05:11:29.932+0000] {processor.py:753} INFO - DAG(s) dict_keys(['csv_to_postgres']) retrieved from /opt/airflow/dags/etl_climate.py
+[2023-03-22T05:11:29.974+0000] {logging_mixin.py:137} INFO - [2023-03-22T05:11:29.973+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T05:11:30.034+0000] {logging_mixin.py:137} INFO - [2023-03-22T05:11:30.033+0000] {dag.py:3444} INFO - Setting next_dagrun for csv_to_postgres to None, run_after=None
+[2023-03-22T05:11:30.071+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/etl_climate.py took 0.979 seconds
+[2023-03-22T05:12:01.313+0000] {processor.py:153} INFO - Started process (PID=17657) to work on /opt/airflow/dags/etl_climate.py
+[2023-03-22T05:12:01.317+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/etl_climate.py for tasks to queue
+[2023-03-22T05:12:01.324+0000] {logging_mixin.py:137} INFO - [2023-03-22T05:12:01.324+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/etl_climate.py
+[2023-03-22T05:12:02.126+0000] {processor.py:753} INFO - DAG(s) dict_keys(['csv_to_postgres']) retrieved from /opt/airflow/dags/etl_climate.py
+[2023-03-22T05:12:02.167+0000] {logging_mixin.py:137} INFO - [2023-03-22T05:12:02.166+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T05:12:02.213+0000] {logging_mixin.py:137} INFO - [2023-03-22T05:12:02.212+0000] {dag.py:3444} INFO - Setting next_dagrun for csv_to_postgres to None, run_after=None
+[2023-03-22T05:12:02.254+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/etl_climate.py took 0.952 seconds
+[2023-03-22T05:12:34.167+0000] {processor.py:153} INFO - Started process (PID=17706) to work on /opt/airflow/dags/etl_climate.py
+[2023-03-22T05:12:34.172+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/etl_climate.py for tasks to queue
+[2023-03-22T05:12:34.180+0000] {logging_mixin.py:137} INFO - [2023-03-22T05:12:34.178+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/etl_climate.py
+[2023-03-22T05:12:37.952+0000] {processor.py:753} INFO - DAG(s) dict_keys(['csv_to_postgres']) retrieved from /opt/airflow/dags/etl_climate.py
+[2023-03-22T05:12:38.070+0000] {logging_mixin.py:137} INFO - [2023-03-22T05:12:38.068+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T05:12:38.514+0000] {logging_mixin.py:137} INFO - [2023-03-22T05:12:38.514+0000] {dag.py:3444} INFO - Setting next_dagrun for csv_to_postgres to None, run_after=None
+[2023-03-22T05:12:38.717+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/etl_climate.py took 4.563 seconds
+[2023-03-22T05:13:09.199+0000] {processor.py:153} INFO - Started process (PID=17767) to work on /opt/airflow/dags/etl_climate.py
+[2023-03-22T05:13:09.203+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/etl_climate.py for tasks to queue
+[2023-03-22T05:13:09.209+0000] {logging_mixin.py:137} INFO - [2023-03-22T05:13:09.208+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/etl_climate.py
+[2023-03-22T05:13:10.287+0000] {processor.py:753} INFO - DAG(s) dict_keys(['csv_to_postgres']) retrieved from /opt/airflow/dags/etl_climate.py
+[2023-03-22T05:13:10.353+0000] {logging_mixin.py:137} INFO - [2023-03-22T05:13:10.352+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T05:13:10.411+0000] {logging_mixin.py:137} INFO - [2023-03-22T05:13:10.411+0000] {dag.py:3444} INFO - Setting next_dagrun for csv_to_postgres to None, run_after=None
+[2023-03-22T05:13:10.469+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/etl_climate.py took 1.307 seconds
+[2023-03-22T05:13:41.449+0000] {processor.py:153} INFO - Started process (PID=17826) to work on /opt/airflow/dags/etl_climate.py
+[2023-03-22T05:13:41.467+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/etl_climate.py for tasks to queue
+[2023-03-22T05:13:41.480+0000] {logging_mixin.py:137} INFO - [2023-03-22T05:13:41.480+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/etl_climate.py
+[2023-03-22T05:13:42.298+0000] {processor.py:753} INFO - DAG(s) dict_keys(['csv_to_postgres']) retrieved from /opt/airflow/dags/etl_climate.py
+[2023-03-22T05:13:42.346+0000] {logging_mixin.py:137} INFO - [2023-03-22T05:13:42.346+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T05:13:42.427+0000] {logging_mixin.py:137} INFO - [2023-03-22T05:13:42.427+0000] {dag.py:3444} INFO - Setting next_dagrun for csv_to_postgres to None, run_after=None
+[2023-03-22T05:13:42.502+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/etl_climate.py took 1.085 seconds
+[2023-03-22T05:14:13.278+0000] {processor.py:153} INFO - Started process (PID=17885) to work on /opt/airflow/dags/etl_climate.py
+[2023-03-22T05:14:13.313+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/etl_climate.py for tasks to queue
+[2023-03-22T05:14:13.322+0000] {logging_mixin.py:137} INFO - [2023-03-22T05:14:13.318+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/etl_climate.py
+[2023-03-22T05:14:15.149+0000] {processor.py:753} INFO - DAG(s) dict_keys(['csv_to_postgres']) retrieved from /opt/airflow/dags/etl_climate.py
+[2023-03-22T05:14:15.236+0000] {logging_mixin.py:137} INFO - [2023-03-22T05:14:15.234+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T05:14:15.434+0000] {logging_mixin.py:137} INFO - [2023-03-22T05:14:15.434+0000] {dag.py:3444} INFO - Setting next_dagrun for csv_to_postgres to None, run_after=None
+[2023-03-22T05:14:15.483+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/etl_climate.py took 2.238 seconds
+[2023-03-22T05:14:45.881+0000] {processor.py:153} INFO - Started process (PID=17947) to work on /opt/airflow/dags/etl_climate.py
+[2023-03-22T05:14:45.886+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/etl_climate.py for tasks to queue
+[2023-03-22T05:14:45.891+0000] {logging_mixin.py:137} INFO - [2023-03-22T05:14:45.891+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/etl_climate.py
+[2023-03-22T05:14:47.004+0000] {processor.py:753} INFO - DAG(s) dict_keys(['csv_to_postgres']) retrieved from /opt/airflow/dags/etl_climate.py
+[2023-03-22T05:14:47.060+0000] {logging_mixin.py:137} INFO - [2023-03-22T05:14:47.059+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T05:14:47.145+0000] {logging_mixin.py:137} INFO - [2023-03-22T05:14:47.144+0000] {dag.py:3444} INFO - Setting next_dagrun for csv_to_postgres to None, run_after=None
+[2023-03-22T05:14:47.239+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/etl_climate.py took 1.378 seconds
+[2023-03-22T05:15:18.650+0000] {processor.py:153} INFO - Started process (PID=18004) to work on /opt/airflow/dags/etl_climate.py
+[2023-03-22T05:15:18.654+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/etl_climate.py for tasks to queue
+[2023-03-22T05:15:18.659+0000] {logging_mixin.py:137} INFO - [2023-03-22T05:15:18.658+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/etl_climate.py
+[2023-03-22T05:15:23.004+0000] {processor.py:753} INFO - DAG(s) dict_keys(['csv_to_postgres']) retrieved from /opt/airflow/dags/etl_climate.py
+[2023-03-22T05:15:23.259+0000] {logging_mixin.py:137} INFO - [2023-03-22T05:15:23.256+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T05:15:23.399+0000] {logging_mixin.py:137} INFO - [2023-03-22T05:15:23.399+0000] {dag.py:3444} INFO - Setting next_dagrun for csv_to_postgres to None, run_after=None
+[2023-03-22T05:15:23.487+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/etl_climate.py took 4.859 seconds
+[2023-03-22T05:15:54.857+0000] {processor.py:153} INFO - Started process (PID=18071) to work on /opt/airflow/dags/etl_climate.py
+[2023-03-22T05:15:54.891+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/etl_climate.py for tasks to queue
+[2023-03-22T05:15:54.914+0000] {logging_mixin.py:137} INFO - [2023-03-22T05:15:54.913+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/etl_climate.py
+[2023-03-22T05:15:57.356+0000] {processor.py:753} INFO - DAG(s) dict_keys(['csv_to_postgres']) retrieved from /opt/airflow/dags/etl_climate.py
+[2023-03-22T05:15:57.507+0000] {logging_mixin.py:137} INFO - [2023-03-22T05:15:57.506+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T05:15:57.803+0000] {logging_mixin.py:137} INFO - [2023-03-22T05:15:57.803+0000] {dag.py:3444} INFO - Setting next_dagrun for csv_to_postgres to None, run_after=None
+[2023-03-22T05:15:58.100+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/etl_climate.py took 3.275 seconds
+[2023-03-22T05:16:28.923+0000] {processor.py:153} INFO - Started process (PID=18132) to work on /opt/airflow/dags/etl_climate.py
+[2023-03-22T05:16:28.926+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/etl_climate.py for tasks to queue
+[2023-03-22T05:16:28.931+0000] {logging_mixin.py:137} INFO - [2023-03-22T05:16:28.930+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/etl_climate.py
+[2023-03-22T05:16:30.540+0000] {processor.py:753} INFO - DAG(s) dict_keys(['csv_to_postgres']) retrieved from /opt/airflow/dags/etl_climate.py
+[2023-03-22T05:16:30.627+0000] {logging_mixin.py:137} INFO - [2023-03-22T05:16:30.625+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T05:16:30.748+0000] {logging_mixin.py:137} INFO - [2023-03-22T05:16:30.748+0000] {dag.py:3444} INFO - Setting next_dagrun for csv_to_postgres to None, run_after=None
+[2023-03-22T05:16:30.841+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/etl_climate.py took 1.928 seconds
+[2023-03-22T05:17:01.701+0000] {processor.py:153} INFO - Started process (PID=18197) to work on /opt/airflow/dags/etl_climate.py
+[2023-03-22T05:17:01.713+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/etl_climate.py for tasks to queue
+[2023-03-22T05:17:01.737+0000] {logging_mixin.py:137} INFO - [2023-03-22T05:17:01.732+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/etl_climate.py
+[2023-03-22T05:17:05.079+0000] {processor.py:753} INFO - DAG(s) dict_keys(['csv_to_postgres']) retrieved from /opt/airflow/dags/etl_climate.py
+[2023-03-22T05:17:05.263+0000] {logging_mixin.py:137} INFO - [2023-03-22T05:17:05.262+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T05:17:05.500+0000] {logging_mixin.py:137} INFO - [2023-03-22T05:17:05.500+0000] {dag.py:3444} INFO - Setting next_dagrun for csv_to_postgres to None, run_after=None
+[2023-03-22T05:17:05.855+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/etl_climate.py took 4.221 seconds
+[2023-03-22T05:17:36.308+0000] {processor.py:153} INFO - Started process (PID=18260) to work on /opt/airflow/dags/etl_climate.py
+[2023-03-22T05:17:36.312+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/etl_climate.py for tasks to queue
+[2023-03-22T05:17:36.317+0000] {logging_mixin.py:137} INFO - [2023-03-22T05:17:36.317+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/etl_climate.py
+[2023-03-22T05:17:37.945+0000] {processor.py:753} INFO - DAG(s) dict_keys(['csv_to_postgres']) retrieved from /opt/airflow/dags/etl_climate.py
+[2023-03-22T05:17:38.003+0000] {logging_mixin.py:137} INFO - [2023-03-22T05:17:38.001+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T05:17:38.080+0000] {logging_mixin.py:137} INFO - [2023-03-22T05:17:38.080+0000] {dag.py:3444} INFO - Setting next_dagrun for csv_to_postgres to None, run_after=None
+[2023-03-22T05:17:38.128+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/etl_climate.py took 1.832 seconds
+[2023-03-22T05:18:08.462+0000] {processor.py:153} INFO - Started process (PID=18322) to work on /opt/airflow/dags/etl_climate.py
+[2023-03-22T05:18:08.467+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/etl_climate.py for tasks to queue
+[2023-03-22T05:18:08.472+0000] {logging_mixin.py:137} INFO - [2023-03-22T05:18:08.472+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/etl_climate.py
+[2023-03-22T05:18:09.467+0000] {processor.py:753} INFO - DAG(s) dict_keys(['csv_to_postgres']) retrieved from /opt/airflow/dags/etl_climate.py
+[2023-03-22T05:18:09.540+0000] {logging_mixin.py:137} INFO - [2023-03-22T05:18:09.539+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T05:18:09.608+0000] {logging_mixin.py:137} INFO - [2023-03-22T05:18:09.608+0000] {dag.py:3444} INFO - Setting next_dagrun for csv_to_postgres to None, run_after=None
+[2023-03-22T05:18:09.671+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/etl_climate.py took 1.217 seconds
+[2023-03-22T05:18:46.603+0000] {processor.py:153} INFO - Started process (PID=18383) to work on /opt/airflow/dags/etl_climate.py
+[2023-03-22T05:18:46.608+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/etl_climate.py for tasks to queue
+[2023-03-22T05:18:46.611+0000] {logging_mixin.py:137} INFO - [2023-03-22T05:18:46.611+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/etl_climate.py
+[2023-03-22T05:18:47.946+0000] {processor.py:753} INFO - DAG(s) dict_keys(['csv_to_postgres']) retrieved from /opt/airflow/dags/etl_climate.py
+[2023-03-22T05:18:48.048+0000] {logging_mixin.py:137} INFO - [2023-03-22T05:18:48.047+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T05:18:48.192+0000] {logging_mixin.py:137} INFO - [2023-03-22T05:18:48.191+0000] {dag.py:3444} INFO - Setting next_dagrun for csv_to_postgres to None, run_after=None
+[2023-03-22T05:18:48.448+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/etl_climate.py took 1.858 seconds
+[2023-03-22T05:19:18.798+0000] {processor.py:153} INFO - Started process (PID=18445) to work on /opt/airflow/dags/etl_climate.py
+[2023-03-22T05:19:18.802+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/etl_climate.py for tasks to queue
+[2023-03-22T05:19:18.807+0000] {logging_mixin.py:137} INFO - [2023-03-22T05:19:18.807+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/etl_climate.py
+[2023-03-22T05:19:19.541+0000] {processor.py:753} INFO - DAG(s) dict_keys(['csv_to_postgres']) retrieved from /opt/airflow/dags/etl_climate.py
+[2023-03-22T05:19:19.595+0000] {logging_mixin.py:137} INFO - [2023-03-22T05:19:19.595+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T05:19:19.641+0000] {logging_mixin.py:137} INFO - [2023-03-22T05:19:19.641+0000] {dag.py:3444} INFO - Setting next_dagrun for csv_to_postgres to None, run_after=None
+[2023-03-22T05:19:19.676+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/etl_climate.py took 0.886 seconds
+[2023-03-22T05:19:50.095+0000] {processor.py:153} INFO - Started process (PID=18499) to work on /opt/airflow/dags/etl_climate.py
+[2023-03-22T05:19:50.104+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/etl_climate.py for tasks to queue
+[2023-03-22T05:19:50.107+0000] {logging_mixin.py:137} INFO - [2023-03-22T05:19:50.107+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/etl_climate.py
+[2023-03-22T05:19:51.840+0000] {processor.py:753} INFO - DAG(s) dict_keys(['csv_to_postgres']) retrieved from /opt/airflow/dags/etl_climate.py
+[2023-03-22T05:19:51.945+0000] {logging_mixin.py:137} INFO - [2023-03-22T05:19:51.944+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T05:19:52.040+0000] {logging_mixin.py:137} INFO - [2023-03-22T05:19:52.040+0000] {dag.py:3444} INFO - Setting next_dagrun for csv_to_postgres to None, run_after=None
+[2023-03-22T05:19:52.126+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/etl_climate.py took 2.038 seconds
+[2023-03-22T05:20:23.535+0000] {processor.py:153} INFO - Started process (PID=18552) to work on /opt/airflow/dags/etl_climate.py
+[2023-03-22T05:20:23.549+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/etl_climate.py for tasks to queue
+[2023-03-22T05:20:23.565+0000] {logging_mixin.py:137} INFO - [2023-03-22T05:20:23.563+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/etl_climate.py
+[2023-03-22T05:20:29.115+0000] {processor.py:753} INFO - DAG(s) dict_keys(['csv_to_postgres']) retrieved from /opt/airflow/dags/etl_climate.py
+[2023-03-22T05:20:29.212+0000] {logging_mixin.py:137} INFO - [2023-03-22T05:20:29.211+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T05:20:29.323+0000] {logging_mixin.py:137} INFO - [2023-03-22T05:20:29.323+0000] {dag.py:3444} INFO - Setting next_dagrun for csv_to_postgres to None, run_after=None
+[2023-03-22T05:20:29.413+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/etl_climate.py took 5.938 seconds

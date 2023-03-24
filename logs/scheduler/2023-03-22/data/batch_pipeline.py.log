@@ -1,0 +1,782 @@
+[2023-03-22T12:30:08.371+0000] {processor.py:153} INFO - Started process (PID=53549) to work on /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:30:08.375+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/data/batch_pipeline.py for tasks to queue
+[2023-03-22T12:30:08.379+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:30:08.378+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:30:09.280+0000] {processor.py:753} INFO - DAG(s) dict_keys(['batch_pipeline']) retrieved from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:30:10.097+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:30:10.096+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T12:30:10.186+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:30:10.186+0000] {dag.py:3444} INFO - Setting next_dagrun for batch_pipeline to 2023-03-22T00:00:00+00:00, run_after=2023-03-23T00:00:00+00:00
+[2023-03-22T12:30:10.593+0000] {logging_mixin.py:137} WARNING - /home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py:633 RemovedInAirflow3Warning: DAG.full_filepath is deprecated in favour of fileloc
+[2023-03-22T12:30:10.614+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:30:10.595+0000] {dagbag.py:633} ERROR - Failed to write serialized DAG: /opt/airflow/dags/data/batch_pipeline.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 625, in _serialize_dag_capturing_errors
+    session=session,
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/session.py", line 72, in wrapper
+    return func(*args, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/serialized_dag.py", line 149, in write_dag
+    (timezone.utcnow() - timedelta(seconds=min_update_interval)) < cls.last_updated,
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/query.py", line 2893, in scalar
+    ret = self.one()
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/query.py", line 2870, in one
+    return self._iter().one()
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/query.py", line 2919, in _iter
+    execution_options={"_sa_orm_load_options": self.load_options},
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 1713, in execute
+    conn = self._connection_for_bind(bind)
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 1553, in _connection_for_bind
+    engine, execution_options
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 721, in _connection_for_bind
+    self._assert_active()
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 608, in _assert_active
+    code="7s2a",
+sqlalchemy.exc.PendingRollbackError: This Session's transaction has been rolled back due to a previous exception during flush. To begin a new transaction with this Session, first issue Session.rollback(). Original exception was: (psycopg2.errors.UniqueViolation) duplicate key value violates unique constraint "serialized_dag_pkey"
+DETAIL:  Key (dag_id)=(batch_pipeline) already exists.
+
+[SQL: INSERT INTO serialized_dag (dag_id, fileloc, fileloc_hash, data, data_compressed, last_updated, dag_hash, processor_subdir) VALUES (%(dag_id)s, %(fileloc)s, %(fileloc_hash)s, %(data)s, %(data_compressed)s, %(last_updated)s, %(dag_hash)s, %(processor_subdir)s)]
+[parameters: {'dag_id': 'batch_pipeline', 'fileloc': '/opt/airflow/dags/data/batch_pipeline.py', 'fileloc_hash': 8978077464511004, 'data': '{"__version": 1, "dag": {"schedule_interval": "@daily", "_task_group": {"_group_id": null, "prefix_group_id": true, "tooltip": "", "ui_color": "Cornf ... (3273 characters truncated) ... onOperator", "_task_module": "airflow.operators.python", "_is_empty": false, "op_args": [], "op_kwargs": {}}], "dag_dependencies": [], "params": {}}}', 'data_compressed': None, 'last_updated': datetime.datetime(2023, 3, 22, 12, 30, 9, 341598, tzinfo=Timezone('UTC')), 'dag_hash': '32d8f8b325b2f7e43e20cffd0eea2a95', 'processor_subdir': None}]
+(Background on this error at: https://sqlalche.me/e/14/gkpj) (Background on this error at: https://sqlalche.me/e/14/7s2a)
+[2023-03-22T12:30:10.641+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:30:10.639+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T12:30:10.718+0000] {processor.py:178} ERROR - Got an exception! Propagating...
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/dag_processing/processor.py", line 174, in _run_file_processor
+    _handle_dag_file_processing()
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/dag_processing/processor.py", line 158, in _handle_dag_file_processing
+    callback_requests=callback_requests,
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/session.py", line 75, in wrapper
+    return func(*args, session=session, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/dag_processing/processor.py", line 768, in process_file
+    dagbag.sync_to_db(processor_subdir=self._dag_directory, session=session)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/session.py", line 72, in wrapper
+    return func(*args, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 639, in sync_to_db
+    for attempt in run_with_db_retries(logger=self.log):
+  File "/home/airflow/.local/lib/python3.7/site-packages/tenacity/__init__.py", line 347, in __iter__
+    do = self.iter(retry_state=retry_state)
+  File "/home/airflow/.local/lib/python3.7/site-packages/tenacity/__init__.py", line 314, in iter
+    return fut.result()
+  File "/usr/local/lib/python3.7/concurrent/futures/_base.py", line 428, in result
+    return self.__get_result()
+  File "/usr/local/lib/python3.7/concurrent/futures/_base.py", line 384, in __get_result
+    raise self._exception
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 654, in sync_to_db
+    self.dags.values(), processor_subdir=processor_subdir, session=session
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/session.py", line 72, in wrapper
+    return func(*args, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dag.py", line 2704, in bulk_write_to_db
+    orm_dags: list[DagModel] = with_row_locks(query, of=DagModel, session=session).all()
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/query.py", line 2773, in all
+    return self._iter().all()
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/query.py", line 2919, in _iter
+    execution_options={"_sa_orm_load_options": self.load_options},
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 1713, in execute
+    conn = self._connection_for_bind(bind)
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 1553, in _connection_for_bind
+    engine, execution_options
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 721, in _connection_for_bind
+    self._assert_active()
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 608, in _assert_active
+    code="7s2a",
+sqlalchemy.exc.PendingRollbackError: This Session's transaction has been rolled back due to a previous exception during flush. To begin a new transaction with this Session, first issue Session.rollback(). Original exception was: (psycopg2.errors.UniqueViolation) duplicate key value violates unique constraint "serialized_dag_pkey"
+DETAIL:  Key (dag_id)=(batch_pipeline) already exists.
+
+[SQL: INSERT INTO serialized_dag (dag_id, fileloc, fileloc_hash, data, data_compressed, last_updated, dag_hash, processor_subdir) VALUES (%(dag_id)s, %(fileloc)s, %(fileloc_hash)s, %(data)s, %(data_compressed)s, %(last_updated)s, %(dag_hash)s, %(processor_subdir)s)]
+[parameters: {'dag_id': 'batch_pipeline', 'fileloc': '/opt/airflow/dags/data/batch_pipeline.py', 'fileloc_hash': 8978077464511004, 'data': '{"__version": 1, "dag": {"schedule_interval": "@daily", "_task_group": {"_group_id": null, "prefix_group_id": true, "tooltip": "", "ui_color": "Cornf ... (3273 characters truncated) ... onOperator", "_task_module": "airflow.operators.python", "_is_empty": false, "op_args": [], "op_kwargs": {}}], "dag_dependencies": [], "params": {}}}', 'data_compressed': None, 'last_updated': datetime.datetime(2023, 3, 22, 12, 30, 9, 341598, tzinfo=Timezone('UTC')), 'dag_hash': '32d8f8b325b2f7e43e20cffd0eea2a95', 'processor_subdir': None}]
+(Background on this error at: https://sqlalche.me/e/14/gkpj) (Background on this error at: https://sqlalche.me/e/14/7s2a)
+[2023-03-22T12:30:41.216+0000] {processor.py:153} INFO - Started process (PID=53610) to work on /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:30:41.227+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/data/batch_pipeline.py for tasks to queue
+[2023-03-22T12:30:41.255+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:30:41.247+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:30:42.295+0000] {processor.py:753} INFO - DAG(s) dict_keys(['batch_pipeline']) retrieved from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:30:42.780+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:30:42.780+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T12:30:43.356+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:30:43.320+0000] {dag.py:3444} INFO - Setting next_dagrun for batch_pipeline to 2023-03-22T00:00:00+00:00, run_after=2023-03-23T00:00:00+00:00
+[2023-03-22T12:30:43.507+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/data/batch_pipeline.py took 2.319 seconds
+[2023-03-22T12:31:15.136+0000] {processor.py:153} INFO - Started process (PID=53679) to work on /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:31:15.149+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/data/batch_pipeline.py for tasks to queue
+[2023-03-22T12:31:15.166+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:31:15.155+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:31:18.070+0000] {processor.py:753} INFO - DAG(s) dict_keys(['batch_pipeline']) retrieved from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:31:18.137+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:31:18.136+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T12:31:18.290+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:31:18.290+0000] {dag.py:3444} INFO - Setting next_dagrun for batch_pipeline to 2023-03-22T00:00:00+00:00, run_after=2023-03-23T00:00:00+00:00
+[2023-03-22T12:31:18.431+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/data/batch_pipeline.py took 3.317 seconds
+[2023-03-22T12:31:49.818+0000] {processor.py:153} INFO - Started process (PID=53742) to work on /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:31:49.824+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/data/batch_pipeline.py for tasks to queue
+[2023-03-22T12:31:49.828+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:31:49.828+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:31:51.987+0000] {processor.py:753} INFO - DAG(s) dict_keys(['batch_pipeline']) retrieved from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:31:52.396+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:31:52.395+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T12:31:52.555+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:31:52.555+0000] {dag.py:3444} INFO - Setting next_dagrun for batch_pipeline to 2023-03-22T00:00:00+00:00, run_after=2023-03-23T00:00:00+00:00
+[2023-03-22T12:31:52.618+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/data/batch_pipeline.py took 2.826 seconds
+[2023-03-22T12:32:23.225+0000] {processor.py:153} INFO - Started process (PID=53803) to work on /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:32:23.231+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/data/batch_pipeline.py for tasks to queue
+[2023-03-22T12:32:23.239+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:32:23.239+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:32:24.320+0000] {processor.py:753} INFO - DAG(s) dict_keys(['batch_pipeline']) retrieved from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:32:24.351+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:32:24.349+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T12:32:24.431+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:32:24.431+0000] {dag.py:3444} INFO - Setting next_dagrun for batch_pipeline to 2023-03-22T00:00:00+00:00, run_after=2023-03-23T00:00:00+00:00
+[2023-03-22T12:32:24.474+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/data/batch_pipeline.py took 1.264 seconds
+[2023-03-22T12:32:54.698+0000] {processor.py:153} INFO - Started process (PID=53864) to work on /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:32:54.704+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/data/batch_pipeline.py for tasks to queue
+[2023-03-22T12:32:54.713+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:32:54.712+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:32:55.936+0000] {processor.py:753} INFO - DAG(s) dict_keys(['batch_pipeline']) retrieved from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:32:56.776+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:32:56.770+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T12:32:56.895+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:32:56.895+0000] {dag.py:3444} INFO - Setting next_dagrun for batch_pipeline to 2023-03-22T00:00:00+00:00, run_after=2023-03-23T00:00:00+00:00
+[2023-03-22T12:32:57.012+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/data/batch_pipeline.py took 2.340 seconds
+[2023-03-22T12:33:27.909+0000] {processor.py:153} INFO - Started process (PID=53928) to work on /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:33:27.918+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/data/batch_pipeline.py for tasks to queue
+[2023-03-22T12:33:27.936+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:33:27.935+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:33:29.794+0000] {processor.py:753} INFO - DAG(s) dict_keys(['batch_pipeline']) retrieved from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:33:29.849+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:33:29.848+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T12:33:29.969+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:33:29.969+0000] {dag.py:3444} INFO - Setting next_dagrun for batch_pipeline to 2023-03-22T00:00:00+00:00, run_after=2023-03-23T00:00:00+00:00
+[2023-03-22T12:33:30.085+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/data/batch_pipeline.py took 2.195 seconds
+[2023-03-22T12:34:00.292+0000] {processor.py:153} INFO - Started process (PID=53992) to work on /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:34:00.296+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/data/batch_pipeline.py for tasks to queue
+[2023-03-22T12:34:00.301+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:34:00.300+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:34:01.459+0000] {processor.py:753} INFO - DAG(s) dict_keys(['batch_pipeline']) retrieved from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:34:01.632+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:34:01.632+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T12:34:01.702+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:34:01.701+0000] {dag.py:3444} INFO - Setting next_dagrun for batch_pipeline to 2023-03-22T00:00:00+00:00, run_after=2023-03-23T00:00:00+00:00
+[2023-03-22T12:34:01.770+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/data/batch_pipeline.py took 1.490 seconds
+[2023-03-22T12:34:34.194+0000] {processor.py:153} INFO - Started process (PID=54054) to work on /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:34:34.201+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/data/batch_pipeline.py for tasks to queue
+[2023-03-22T12:34:34.208+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:34:34.207+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:34:36.172+0000] {processor.py:753} INFO - DAG(s) dict_keys(['batch_pipeline']) retrieved from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:34:36.204+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:34:36.201+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T12:34:36.296+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:34:36.295+0000] {dag.py:3444} INFO - Setting next_dagrun for batch_pipeline to 2023-03-22T00:00:00+00:00, run_after=2023-03-23T00:00:00+00:00
+[2023-03-22T12:34:36.346+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/data/batch_pipeline.py took 2.173 seconds
+[2023-03-22T12:35:08.949+0000] {processor.py:153} INFO - Started process (PID=54117) to work on /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:35:08.972+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/data/batch_pipeline.py for tasks to queue
+[2023-03-22T12:35:08.977+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:35:08.976+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:35:10.393+0000] {processor.py:753} INFO - DAG(s) dict_keys(['batch_pipeline']) retrieved from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:35:10.635+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:35:10.635+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T12:35:10.716+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:35:10.715+0000] {dag.py:3444} INFO - Setting next_dagrun for batch_pipeline to 2023-03-22T00:00:00+00:00, run_after=2023-03-23T00:00:00+00:00
+[2023-03-22T12:35:10.815+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/data/batch_pipeline.py took 1.935 seconds
+[2023-03-22T12:35:43.016+0000] {processor.py:153} INFO - Started process (PID=54168) to work on /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:35:43.076+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/data/batch_pipeline.py for tasks to queue
+[2023-03-22T12:35:43.079+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:35:43.078+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:35:46.041+0000] {processor.py:753} INFO - DAG(s) dict_keys(['batch_pipeline']) retrieved from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:35:46.122+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:35:46.120+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T12:35:46.298+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:35:46.298+0000] {dag.py:3444} INFO - Setting next_dagrun for batch_pipeline to 2023-03-22T00:00:00+00:00, run_after=2023-03-23T00:00:00+00:00
+[2023-03-22T12:35:46.433+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/data/batch_pipeline.py took 3.472 seconds
+[2023-03-22T12:36:16.667+0000] {processor.py:153} INFO - Started process (PID=54229) to work on /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:36:16.676+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/data/batch_pipeline.py for tasks to queue
+[2023-03-22T12:36:16.684+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:36:16.683+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:36:18.415+0000] {processor.py:753} INFO - DAG(s) dict_keys(['batch_pipeline']) retrieved from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:36:18.676+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:36:18.675+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T12:36:18.845+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:36:18.845+0000] {dag.py:3444} INFO - Setting next_dagrun for batch_pipeline to 2023-03-22T00:00:00+00:00, run_after=2023-03-23T00:00:00+00:00
+[2023-03-22T12:36:18.927+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/data/batch_pipeline.py took 2.284 seconds
+[2023-03-22T12:36:49.214+0000] {processor.py:153} INFO - Started process (PID=54290) to work on /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:36:49.224+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/data/batch_pipeline.py for tasks to queue
+[2023-03-22T12:36:49.241+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:36:49.239+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:36:52.090+0000] {processor.py:753} INFO - DAG(s) dict_keys(['batch_pipeline']) retrieved from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:36:52.226+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:36:52.225+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T12:36:52.346+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:36:52.345+0000] {dag.py:3444} INFO - Setting next_dagrun for batch_pipeline to 2023-03-22T00:00:00+00:00, run_after=2023-03-23T00:00:00+00:00
+[2023-03-22T12:36:52.422+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/data/batch_pipeline.py took 3.266 seconds
+[2023-03-22T12:37:23.096+0000] {processor.py:153} INFO - Started process (PID=54359) to work on /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:37:23.128+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/data/batch_pipeline.py for tasks to queue
+[2023-03-22T12:37:23.136+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:37:23.136+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:37:24.954+0000] {processor.py:753} INFO - DAG(s) dict_keys(['batch_pipeline']) retrieved from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:37:25.145+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:37:25.143+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T12:37:25.240+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:37:25.240+0000] {dag.py:3444} INFO - Setting next_dagrun for batch_pipeline to 2023-03-22T00:00:00+00:00, run_after=2023-03-23T00:00:00+00:00
+[2023-03-22T12:37:25.347+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/data/batch_pipeline.py took 2.274 seconds
+[2023-03-22T12:37:56.547+0000] {processor.py:153} INFO - Started process (PID=54419) to work on /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:37:56.555+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/data/batch_pipeline.py for tasks to queue
+[2023-03-22T12:37:56.564+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:37:56.559+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:37:58.345+0000] {processor.py:753} INFO - DAG(s) dict_keys(['batch_pipeline']) retrieved from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:37:58.457+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:37:58.456+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T12:37:58.550+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:37:58.550+0000] {dag.py:3444} INFO - Setting next_dagrun for batch_pipeline to 2023-03-22T00:00:00+00:00, run_after=2023-03-23T00:00:00+00:00
+[2023-03-22T12:37:58.621+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/data/batch_pipeline.py took 2.107 seconds
+[2023-03-22T12:38:29.191+0000] {processor.py:153} INFO - Started process (PID=54480) to work on /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:38:29.195+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/data/batch_pipeline.py for tasks to queue
+[2023-03-22T12:38:29.199+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:38:29.198+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:38:30.068+0000] {processor.py:753} INFO - DAG(s) dict_keys(['batch_pipeline']) retrieved from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:38:30.234+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:38:30.233+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T12:38:30.311+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:38:30.309+0000] {dag.py:3444} INFO - Setting next_dagrun for batch_pipeline to 2023-03-22T00:00:00+00:00, run_after=2023-03-23T00:00:00+00:00
+[2023-03-22T12:38:30.376+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/data/batch_pipeline.py took 1.199 seconds
+[2023-03-22T12:39:00.564+0000] {processor.py:153} INFO - Started process (PID=54541) to work on /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:39:00.569+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/data/batch_pipeline.py for tasks to queue
+[2023-03-22T12:39:00.575+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:39:00.574+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:39:01.500+0000] {processor.py:753} INFO - DAG(s) dict_keys(['batch_pipeline']) retrieved from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:39:01.550+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:39:01.549+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T12:39:01.605+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:39:01.604+0000] {dag.py:3444} INFO - Setting next_dagrun for batch_pipeline to 2023-03-22T00:00:00+00:00, run_after=2023-03-23T00:00:00+00:00
+[2023-03-22T12:39:01.645+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/data/batch_pipeline.py took 1.095 seconds
+[2023-03-22T12:39:31.972+0000] {processor.py:153} INFO - Started process (PID=54602) to work on /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:39:31.975+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/data/batch_pipeline.py for tasks to queue
+[2023-03-22T12:39:31.978+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:39:31.978+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:39:33.105+0000] {processor.py:753} INFO - DAG(s) dict_keys(['batch_pipeline']) retrieved from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:39:33.280+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:39:33.280+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T12:39:33.344+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:39:33.344+0000] {dag.py:3444} INFO - Setting next_dagrun for batch_pipeline to 2023-03-22T00:00:00+00:00, run_after=2023-03-23T00:00:00+00:00
+[2023-03-22T12:39:33.459+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/data/batch_pipeline.py took 1.498 seconds
+[2023-03-22T12:40:03.941+0000] {processor.py:153} INFO - Started process (PID=54663) to work on /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:40:03.946+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/data/batch_pipeline.py for tasks to queue
+[2023-03-22T12:40:03.954+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:40:03.953+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:40:04.857+0000] {processor.py:753} INFO - DAG(s) dict_keys(['batch_pipeline']) retrieved from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:40:05.003+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:40:04.996+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T12:40:05.220+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:40:05.220+0000] {dag.py:3444} INFO - Setting next_dagrun for batch_pipeline to 2023-03-22T00:00:00+00:00, run_after=2023-03-23T00:00:00+00:00
+[2023-03-22T12:40:05.260+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/data/batch_pipeline.py took 1.335 seconds
+[2023-03-22T12:40:36.185+0000] {processor.py:153} INFO - Started process (PID=54724) to work on /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:40:36.191+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/data/batch_pipeline.py for tasks to queue
+[2023-03-22T12:40:36.197+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:40:36.196+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:40:37.195+0000] {processor.py:753} INFO - DAG(s) dict_keys(['batch_pipeline']) retrieved from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:40:37.343+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:40:37.342+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T12:40:37.412+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:40:37.411+0000] {dag.py:3444} INFO - Setting next_dagrun for batch_pipeline to 2023-03-22T00:00:00+00:00, run_after=2023-03-23T00:00:00+00:00
+[2023-03-22T12:40:37.473+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/data/batch_pipeline.py took 1.302 seconds
+[2023-03-22T12:41:07.691+0000] {processor.py:153} INFO - Started process (PID=54785) to work on /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:41:07.701+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/data/batch_pipeline.py for tasks to queue
+[2023-03-22T12:41:07.707+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:41:07.707+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:41:08.599+0000] {processor.py:753} INFO - DAG(s) dict_keys(['batch_pipeline']) retrieved from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:41:08.792+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:41:08.789+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T12:41:08.856+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:41:08.855+0000] {dag.py:3444} INFO - Setting next_dagrun for batch_pipeline to 2023-03-22T00:00:00+00:00, run_after=2023-03-23T00:00:00+00:00
+[2023-03-22T12:41:08.894+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/data/batch_pipeline.py took 1.214 seconds
+[2023-03-22T12:41:39.365+0000] {processor.py:153} INFO - Started process (PID=54846) to work on /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:41:39.374+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/data/batch_pipeline.py for tasks to queue
+[2023-03-22T12:41:39.382+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:41:39.381+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:41:40.959+0000] {processor.py:753} INFO - DAG(s) dict_keys(['batch_pipeline']) retrieved from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:41:41.035+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:41:41.035+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T12:41:41.096+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:41:41.096+0000] {dag.py:3444} INFO - Setting next_dagrun for batch_pipeline to 2023-03-22T00:00:00+00:00, run_after=2023-03-23T00:00:00+00:00
+[2023-03-22T12:41:41.148+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/data/batch_pipeline.py took 1.823 seconds
+[2023-03-22T12:42:12.192+0000] {processor.py:153} INFO - Started process (PID=54907) to work on /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:42:12.204+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/data/batch_pipeline.py for tasks to queue
+[2023-03-22T12:42:12.223+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:42:12.223+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:42:14.635+0000] {processor.py:753} INFO - DAG(s) dict_keys(['batch_pipeline']) retrieved from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:42:14.958+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:42:14.955+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T12:42:15.137+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:42:15.137+0000] {dag.py:3444} INFO - Setting next_dagrun for batch_pipeline to 2023-03-22T00:00:00+00:00, run_after=2023-03-23T00:00:00+00:00
+[2023-03-22T12:42:15.298+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/data/batch_pipeline.py took 3.145 seconds
+[2023-03-22T12:42:45.753+0000] {processor.py:153} INFO - Started process (PID=54968) to work on /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:42:45.763+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/data/batch_pipeline.py for tasks to queue
+[2023-03-22T12:42:45.772+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:42:45.772+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:42:47.938+0000] {processor.py:753} INFO - DAG(s) dict_keys(['batch_pipeline']) retrieved from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:42:48.105+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:42:48.104+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T12:42:48.308+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:42:48.308+0000] {dag.py:3444} INFO - Setting next_dagrun for batch_pipeline to 2023-03-22T00:00:00+00:00, run_after=2023-03-23T00:00:00+00:00
+[2023-03-22T12:42:48.394+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/data/batch_pipeline.py took 2.691 seconds
+[2023-03-22T12:43:18.860+0000] {processor.py:153} INFO - Started process (PID=55028) to work on /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:43:18.867+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/data/batch_pipeline.py for tasks to queue
+[2023-03-22T12:43:18.870+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:43:18.870+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:43:19.734+0000] {processor.py:753} INFO - DAG(s) dict_keys(['batch_pipeline']) retrieved from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:43:19.886+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:43:19.885+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T12:43:19.972+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:43:19.971+0000] {dag.py:3444} INFO - Setting next_dagrun for batch_pipeline to 2023-03-22T00:00:00+00:00, run_after=2023-03-23T00:00:00+00:00
+[2023-03-22T12:43:20.019+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/data/batch_pipeline.py took 1.170 seconds
+[2023-03-22T12:43:50.346+0000] {processor.py:153} INFO - Started process (PID=55089) to work on /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:43:50.351+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/data/batch_pipeline.py for tasks to queue
+[2023-03-22T12:43:50.355+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:43:50.355+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:43:51.206+0000] {processor.py:753} INFO - DAG(s) dict_keys(['batch_pipeline']) retrieved from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:43:51.273+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:43:51.272+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T12:43:51.383+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:43:51.383+0000] {dag.py:3444} INFO - Setting next_dagrun for batch_pipeline to 2023-03-22T00:00:00+00:00, run_after=2023-03-23T00:00:00+00:00
+[2023-03-22T12:43:51.436+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/data/batch_pipeline.py took 1.098 seconds
+[2023-03-22T12:44:22.437+0000] {processor.py:153} INFO - Started process (PID=55150) to work on /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:44:22.441+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/data/batch_pipeline.py for tasks to queue
+[2023-03-22T12:44:22.444+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:44:22.444+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:44:23.765+0000] {processor.py:753} INFO - DAG(s) dict_keys(['batch_pipeline']) retrieved from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:44:23.929+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:44:23.928+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T12:44:24.018+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:44:24.017+0000] {dag.py:3444} INFO - Setting next_dagrun for batch_pipeline to 2023-03-22T00:00:00+00:00, run_after=2023-03-23T00:00:00+00:00
+[2023-03-22T12:44:24.066+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/data/batch_pipeline.py took 1.649 seconds
+[2023-03-22T12:44:54.296+0000] {processor.py:153} INFO - Started process (PID=55221) to work on /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:44:54.312+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/data/batch_pipeline.py for tasks to queue
+[2023-03-22T12:44:54.319+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:44:54.319+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:44:55.432+0000] {processor.py:753} INFO - DAG(s) dict_keys(['batch_pipeline']) retrieved from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:44:55.529+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:44:55.528+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T12:44:55.604+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:44:55.603+0000] {dag.py:3444} INFO - Setting next_dagrun for batch_pipeline to 2023-03-22T00:00:00+00:00, run_after=2023-03-23T00:00:00+00:00
+[2023-03-22T12:44:55.670+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/data/batch_pipeline.py took 1.388 seconds
+[2023-03-22T12:45:26.432+0000] {processor.py:153} INFO - Started process (PID=55284) to work on /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:45:26.437+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/data/batch_pipeline.py for tasks to queue
+[2023-03-22T12:45:26.441+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:45:26.440+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:45:27.480+0000] {processor.py:753} INFO - DAG(s) dict_keys(['batch_pipeline']) retrieved from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:45:27.621+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:45:27.619+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T12:45:27.687+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:45:27.687+0000] {dag.py:3444} INFO - Setting next_dagrun for batch_pipeline to 2023-03-22T00:00:00+00:00, run_after=2023-03-23T00:00:00+00:00
+[2023-03-22T12:45:27.734+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/data/batch_pipeline.py took 1.317 seconds
+[2023-03-22T12:45:59.956+0000] {processor.py:153} INFO - Started process (PID=55348) to work on /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:45:59.969+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/data/batch_pipeline.py for tasks to queue
+[2023-03-22T12:45:59.982+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:45:59.980+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:46:02.800+0000] {processor.py:753} INFO - DAG(s) dict_keys(['batch_pipeline']) retrieved from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:46:02.881+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:46:02.880+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T12:46:02.968+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:46:02.967+0000] {dag.py:3444} INFO - Setting next_dagrun for batch_pipeline to 2023-03-22T00:00:00+00:00, run_after=2023-03-23T00:00:00+00:00
+[2023-03-22T12:46:03.035+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/data/batch_pipeline.py took 3.104 seconds
+[2023-03-22T12:46:33.469+0000] {processor.py:153} INFO - Started process (PID=55408) to work on /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:46:33.483+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/data/batch_pipeline.py for tasks to queue
+[2023-03-22T12:46:33.488+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:46:33.487+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:46:36.808+0000] {processor.py:753} INFO - DAG(s) dict_keys(['batch_pipeline']) retrieved from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:46:37.376+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:46:37.376+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T12:46:37.546+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:46:37.545+0000] {dag.py:3444} INFO - Setting next_dagrun for batch_pipeline to 2023-03-22T00:00:00+00:00, run_after=2023-03-23T00:00:00+00:00
+[2023-03-22T12:46:37.685+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/data/batch_pipeline.py took 4.245 seconds
+[2023-03-22T12:47:07.972+0000] {processor.py:153} INFO - Started process (PID=55470) to work on /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:47:07.978+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/data/batch_pipeline.py for tasks to queue
+[2023-03-22T12:47:07.982+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:47:07.982+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:47:08.880+0000] {processor.py:753} INFO - DAG(s) dict_keys(['batch_pipeline']) retrieved from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:47:08.906+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:47:08.905+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T12:47:08.959+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:47:08.958+0000] {dag.py:3444} INFO - Setting next_dagrun for batch_pipeline to 2023-03-22T00:00:00+00:00, run_after=2023-03-23T00:00:00+00:00
+[2023-03-22T12:47:08.996+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/data/batch_pipeline.py took 1.040 seconds
+[2023-03-22T12:47:39.750+0000] {processor.py:153} INFO - Started process (PID=55532) to work on /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:47:39.787+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/data/batch_pipeline.py for tasks to queue
+[2023-03-22T12:47:39.830+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:47:39.830+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:47:41.414+0000] {processor.py:753} INFO - DAG(s) dict_keys(['batch_pipeline']) retrieved from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:47:41.583+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:47:41.582+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T12:47:41.726+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:47:41.726+0000] {dag.py:3444} INFO - Setting next_dagrun for batch_pipeline to 2023-03-22T00:00:00+00:00, run_after=2023-03-23T00:00:00+00:00
+[2023-03-22T12:47:41.797+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/data/batch_pipeline.py took 2.106 seconds
+[2023-03-22T12:48:12.064+0000] {processor.py:153} INFO - Started process (PID=55593) to work on /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:48:12.069+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/data/batch_pipeline.py for tasks to queue
+[2023-03-22T12:48:12.075+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:48:12.074+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:48:12.991+0000] {processor.py:753} INFO - DAG(s) dict_keys(['batch_pipeline']) retrieved from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:48:13.033+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:48:13.032+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T12:48:13.142+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:48:13.141+0000] {dag.py:3444} INFO - Setting next_dagrun for batch_pipeline to 2023-03-22T00:00:00+00:00, run_after=2023-03-23T00:00:00+00:00
+[2023-03-22T12:48:13.188+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/data/batch_pipeline.py took 1.146 seconds
+[2023-03-22T12:48:43.593+0000] {processor.py:153} INFO - Started process (PID=55652) to work on /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:48:43.598+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/data/batch_pipeline.py for tasks to queue
+[2023-03-22T12:48:43.604+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:48:43.603+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:48:44.737+0000] {processor.py:753} INFO - DAG(s) dict_keys(['batch_pipeline']) retrieved from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:48:44.943+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:48:44.942+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T12:48:45.042+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:48:45.040+0000] {dag.py:3444} INFO - Setting next_dagrun for batch_pipeline to 2023-03-22T00:00:00+00:00, run_after=2023-03-23T00:00:00+00:00
+[2023-03-22T12:48:45.112+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/data/batch_pipeline.py took 1.531 seconds
+[2023-03-22T12:49:19.148+0000] {processor.py:153} INFO - Started process (PID=55712) to work on /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:49:19.154+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/data/batch_pipeline.py for tasks to queue
+[2023-03-22T12:49:19.160+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:49:19.159+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:49:20.346+0000] {processor.py:753} INFO - DAG(s) dict_keys(['batch_pipeline']) retrieved from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:49:20.385+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:49:20.384+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T12:49:20.452+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:49:20.451+0000] {dag.py:3444} INFO - Setting next_dagrun for batch_pipeline to 2023-03-22T00:00:00+00:00, run_after=2023-03-23T00:00:00+00:00
+[2023-03-22T12:49:20.495+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/data/batch_pipeline.py took 1.358 seconds
+[2023-03-22T12:49:52.446+0000] {processor.py:153} INFO - Started process (PID=55776) to work on /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:49:52.457+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/data/batch_pipeline.py for tasks to queue
+[2023-03-22T12:49:52.470+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:49:52.470+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:49:55.644+0000] {processor.py:753} INFO - DAG(s) dict_keys(['batch_pipeline']) retrieved from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:49:55.999+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:49:55.998+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T12:49:56.125+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:49:56.125+0000] {dag.py:3444} INFO - Setting next_dagrun for batch_pipeline to 2023-03-22T00:00:00+00:00, run_after=2023-03-23T00:00:00+00:00
+[2023-03-22T12:49:56.220+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/data/batch_pipeline.py took 3.801 seconds
+[2023-03-22T12:50:26.720+0000] {processor.py:153} INFO - Started process (PID=55845) to work on /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:50:26.726+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/data/batch_pipeline.py for tasks to queue
+[2023-03-22T12:50:26.735+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:50:26.734+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:50:29.894+0000] {processor.py:753} INFO - DAG(s) dict_keys(['batch_pipeline']) retrieved from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:50:30.036+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:50:30.035+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T12:50:30.284+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:50:30.284+0000] {dag.py:3444} INFO - Setting next_dagrun for batch_pipeline to 2023-03-22T00:00:00+00:00, run_after=2023-03-23T00:00:00+00:00
+[2023-03-22T12:50:30.418+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/data/batch_pipeline.py took 3.733 seconds
+[2023-03-22T12:51:01.291+0000] {processor.py:153} INFO - Started process (PID=55909) to work on /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:51:01.295+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/data/batch_pipeline.py for tasks to queue
+[2023-03-22T12:51:01.299+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:51:01.299+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:51:02.811+0000] {processor.py:753} INFO - DAG(s) dict_keys(['batch_pipeline']) retrieved from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:51:02.897+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:51:02.890+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T12:51:03.087+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:51:03.087+0000] {dag.py:3444} INFO - Setting next_dagrun for batch_pipeline to 2023-03-22T00:00:00+00:00, run_after=2023-03-23T00:00:00+00:00
+[2023-03-22T12:51:03.186+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/data/batch_pipeline.py took 1.908 seconds
+[2023-03-22T12:51:34.282+0000] {processor.py:153} INFO - Started process (PID=55973) to work on /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:51:34.287+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/data/batch_pipeline.py for tasks to queue
+[2023-03-22T12:51:34.292+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:51:34.291+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:51:35.313+0000] {processor.py:753} INFO - DAG(s) dict_keys(['batch_pipeline']) retrieved from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:51:35.493+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:51:35.488+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T12:51:35.552+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:51:35.552+0000] {dag.py:3444} INFO - Setting next_dagrun for batch_pipeline to 2023-03-22T00:00:00+00:00, run_after=2023-03-23T00:00:00+00:00
+[2023-03-22T12:51:35.611+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/data/batch_pipeline.py took 1.346 seconds
+[2023-03-22T12:52:05.963+0000] {processor.py:153} INFO - Started process (PID=56037) to work on /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:52:05.968+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/data/batch_pipeline.py for tasks to queue
+[2023-03-22T12:52:05.974+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:52:05.974+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:52:06.999+0000] {processor.py:753} INFO - DAG(s) dict_keys(['batch_pipeline']) retrieved from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:52:07.091+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:52:07.091+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T12:52:07.171+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:52:07.171+0000] {dag.py:3444} INFO - Setting next_dagrun for batch_pipeline to 2023-03-22T00:00:00+00:00, run_after=2023-03-23T00:00:00+00:00
+[2023-03-22T12:52:07.246+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/data/batch_pipeline.py took 1.303 seconds
+[2023-03-22T12:52:37.696+0000] {processor.py:153} INFO - Started process (PID=56101) to work on /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:52:37.700+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/data/batch_pipeline.py for tasks to queue
+[2023-03-22T12:52:37.713+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:52:37.712+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:52:38.746+0000] {processor.py:753} INFO - DAG(s) dict_keys(['batch_pipeline']) retrieved from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:52:38.782+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:52:38.780+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T12:52:38.851+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:52:38.850+0000] {dag.py:3444} INFO - Setting next_dagrun for batch_pipeline to 2023-03-22T00:00:00+00:00, run_after=2023-03-23T00:00:00+00:00
+[2023-03-22T12:52:38.892+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/data/batch_pipeline.py took 1.213 seconds
+[2023-03-22T12:53:09.378+0000] {processor.py:153} INFO - Started process (PID=56163) to work on /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:53:09.382+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/data/batch_pipeline.py for tasks to queue
+[2023-03-22T12:53:09.400+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:53:09.400+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:53:10.338+0000] {processor.py:753} INFO - DAG(s) dict_keys(['batch_pipeline']) retrieved from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:53:10.456+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:53:10.454+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T12:53:10.505+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:53:10.505+0000] {dag.py:3444} INFO - Setting next_dagrun for batch_pipeline to 2023-03-22T00:00:00+00:00, run_after=2023-03-23T00:00:00+00:00
+[2023-03-22T12:53:10.583+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/data/batch_pipeline.py took 1.219 seconds
+[2023-03-22T12:53:40.705+0000] {processor.py:153} INFO - Started process (PID=56224) to work on /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:53:40.710+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/data/batch_pipeline.py for tasks to queue
+[2023-03-22T12:53:40.718+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:53:40.717+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:53:41.725+0000] {processor.py:753} INFO - DAG(s) dict_keys(['batch_pipeline']) retrieved from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:53:41.780+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:53:41.779+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T12:53:41.879+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:53:41.879+0000] {dag.py:3444} INFO - Setting next_dagrun for batch_pipeline to 2023-03-22T00:00:00+00:00, run_after=2023-03-23T00:00:00+00:00
+[2023-03-22T12:53:41.925+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/data/batch_pipeline.py took 1.242 seconds
+[2023-03-22T12:54:12.504+0000] {processor.py:153} INFO - Started process (PID=56285) to work on /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:54:12.525+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/data/batch_pipeline.py for tasks to queue
+[2023-03-22T12:54:12.534+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:54:12.534+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:54:16.386+0000] {processor.py:753} INFO - DAG(s) dict_keys(['batch_pipeline']) retrieved from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:54:16.439+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:54:16.438+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T12:54:16.591+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:54:16.591+0000] {dag.py:3444} INFO - Setting next_dagrun for batch_pipeline to 2023-03-22T00:00:00+00:00, run_after=2023-03-23T00:00:00+00:00
+[2023-03-22T12:54:16.690+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/data/batch_pipeline.py took 4.244 seconds
+[2023-03-22T12:54:46.999+0000] {processor.py:153} INFO - Started process (PID=56350) to work on /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:54:47.004+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/data/batch_pipeline.py for tasks to queue
+[2023-03-22T12:54:47.007+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:54:47.007+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:54:47.784+0000] {processor.py:753} INFO - DAG(s) dict_keys(['batch_pipeline']) retrieved from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:54:47.931+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:54:47.930+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T12:54:47.989+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:54:47.988+0000] {dag.py:3444} INFO - Setting next_dagrun for batch_pipeline to 2023-03-22T00:00:00+00:00, run_after=2023-03-23T00:00:00+00:00
+[2023-03-22T12:54:48.085+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/data/batch_pipeline.py took 1.095 seconds
+[2023-03-22T12:55:18.950+0000] {processor.py:153} INFO - Started process (PID=56411) to work on /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:55:18.970+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/data/batch_pipeline.py for tasks to queue
+[2023-03-22T12:55:18.980+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:55:18.979+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:55:20.111+0000] {processor.py:753} INFO - DAG(s) dict_keys(['batch_pipeline']) retrieved from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:55:20.166+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:55:20.164+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T12:55:20.230+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:55:20.230+0000] {dag.py:3444} INFO - Setting next_dagrun for batch_pipeline to 2023-03-22T00:00:00+00:00, run_after=2023-03-23T00:00:00+00:00
+[2023-03-22T12:55:20.290+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/data/batch_pipeline.py took 1.363 seconds
+[2023-03-22T12:55:50.741+0000] {processor.py:153} INFO - Started process (PID=56474) to work on /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:55:50.748+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/data/batch_pipeline.py for tasks to queue
+[2023-03-22T12:55:50.754+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:55:50.754+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:55:52.866+0000] {processor.py:753} INFO - DAG(s) dict_keys(['batch_pipeline']) retrieved from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:55:52.914+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:55:52.913+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T12:55:53.043+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:55:53.043+0000] {dag.py:3444} INFO - Setting next_dagrun for batch_pipeline to 2023-03-22T00:00:00+00:00, run_after=2023-03-23T00:00:00+00:00
+[2023-03-22T12:55:53.141+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/data/batch_pipeline.py took 2.413 seconds
+[2023-03-22T12:56:23.699+0000] {processor.py:153} INFO - Started process (PID=56537) to work on /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:56:23.703+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/data/batch_pipeline.py for tasks to queue
+[2023-03-22T12:56:23.708+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:56:23.708+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:56:24.740+0000] {processor.py:753} INFO - DAG(s) dict_keys(['batch_pipeline']) retrieved from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:56:24.892+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:56:24.892+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T12:56:24.973+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:56:24.973+0000] {dag.py:3444} INFO - Setting next_dagrun for batch_pipeline to 2023-03-22T00:00:00+00:00, run_after=2023-03-23T00:00:00+00:00
+[2023-03-22T12:56:25.046+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/data/batch_pipeline.py took 1.358 seconds
+[2023-03-22T12:56:55.745+0000] {processor.py:153} INFO - Started process (PID=56601) to work on /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:56:55.751+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/data/batch_pipeline.py for tasks to queue
+[2023-03-22T12:56:55.755+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:56:55.754+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:56:56.773+0000] {processor.py:753} INFO - DAG(s) dict_keys(['batch_pipeline']) retrieved from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:56:56.841+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:56:56.840+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T12:56:56.926+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:56:56.926+0000] {dag.py:3444} INFO - Setting next_dagrun for batch_pipeline to 2023-03-22T00:00:00+00:00, run_after=2023-03-23T00:00:00+00:00
+[2023-03-22T12:56:56.959+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/data/batch_pipeline.py took 1.228 seconds
+[2023-03-22T12:57:27.321+0000] {processor.py:153} INFO - Started process (PID=56665) to work on /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:57:27.330+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/data/batch_pipeline.py for tasks to queue
+[2023-03-22T12:57:27.344+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:57:27.343+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:57:28.560+0000] {processor.py:753} INFO - DAG(s) dict_keys(['batch_pipeline']) retrieved from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:57:28.608+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:57:28.607+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T12:57:28.767+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:57:28.767+0000] {dag.py:3444} INFO - Setting next_dagrun for batch_pipeline to 2023-03-22T00:00:00+00:00, run_after=2023-03-23T00:00:00+00:00
+[2023-03-22T12:57:28.856+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/data/batch_pipeline.py took 1.563 seconds
+[2023-03-22T12:57:59.360+0000] {processor.py:153} INFO - Started process (PID=56738) to work on /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:57:59.366+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/data/batch_pipeline.py for tasks to queue
+[2023-03-22T12:57:59.369+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:57:59.369+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:58:00.192+0000] {processor.py:753} INFO - DAG(s) dict_keys(['batch_pipeline']) retrieved from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:58:00.410+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:58:00.409+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T12:58:00.487+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:58:00.486+0000] {dag.py:3444} INFO - Setting next_dagrun for batch_pipeline to 2023-03-22T00:00:00+00:00, run_after=2023-03-23T00:00:00+00:00
+[2023-03-22T12:58:00.546+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/data/batch_pipeline.py took 1.197 seconds
+[2023-03-22T12:58:31.320+0000] {processor.py:153} INFO - Started process (PID=56799) to work on /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:58:31.326+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/data/batch_pipeline.py for tasks to queue
+[2023-03-22T12:58:31.336+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:58:31.336+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:58:34.223+0000] {processor.py:753} INFO - DAG(s) dict_keys(['batch_pipeline']) retrieved from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:58:34.304+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:58:34.303+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T12:58:34.386+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:58:34.386+0000] {dag.py:3444} INFO - Setting next_dagrun for batch_pipeline to 2023-03-22T00:00:00+00:00, run_after=2023-03-23T00:00:00+00:00
+[2023-03-22T12:58:34.457+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/data/batch_pipeline.py took 3.165 seconds
+[2023-03-22T12:59:05.232+0000] {processor.py:153} INFO - Started process (PID=56863) to work on /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:59:05.239+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/data/batch_pipeline.py for tasks to queue
+[2023-03-22T12:59:05.249+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:59:05.247+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:59:06.994+0000] {processor.py:753} INFO - DAG(s) dict_keys(['batch_pipeline']) retrieved from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:59:07.026+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:59:07.024+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T12:59:07.091+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:59:07.090+0000] {dag.py:3444} INFO - Setting next_dagrun for batch_pipeline to 2023-03-22T00:00:00+00:00, run_after=2023-03-23T00:00:00+00:00
+[2023-03-22T12:59:07.142+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/data/batch_pipeline.py took 1.921 seconds
+[2023-03-22T12:59:37.716+0000] {processor.py:153} INFO - Started process (PID=56926) to work on /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:59:37.725+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/data/batch_pipeline.py for tasks to queue
+[2023-03-22T12:59:37.738+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:59:37.737+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:59:38.758+0000] {processor.py:753} INFO - DAG(s) dict_keys(['batch_pipeline']) retrieved from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T12:59:38.897+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:59:38.896+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T12:59:38.962+0000] {logging_mixin.py:137} INFO - [2023-03-22T12:59:38.961+0000] {dag.py:3444} INFO - Setting next_dagrun for batch_pipeline to 2023-03-22T00:00:00+00:00, run_after=2023-03-23T00:00:00+00:00
+[2023-03-22T12:59:39.015+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/data/batch_pipeline.py took 1.314 seconds
+[2023-03-22T13:00:09.702+0000] {processor.py:153} INFO - Started process (PID=56989) to work on /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:00:09.710+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/data/batch_pipeline.py for tasks to queue
+[2023-03-22T13:00:09.715+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:00:09.714+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:00:11.611+0000] {processor.py:753} INFO - DAG(s) dict_keys(['batch_pipeline']) retrieved from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:00:11.657+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:00:11.656+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T13:00:11.714+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:00:11.713+0000] {dag.py:3444} INFO - Setting next_dagrun for batch_pipeline to 2023-03-22T00:00:00+00:00, run_after=2023-03-23T00:00:00+00:00
+[2023-03-22T13:00:11.749+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/data/batch_pipeline.py took 2.066 seconds
+[2023-03-22T13:00:42.099+0000] {processor.py:153} INFO - Started process (PID=57054) to work on /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:00:42.111+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/data/batch_pipeline.py for tasks to queue
+[2023-03-22T13:00:42.124+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:00:42.124+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:00:43.768+0000] {processor.py:753} INFO - DAG(s) dict_keys(['batch_pipeline']) retrieved from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:00:43.831+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:00:43.827+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T13:00:43.983+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:00:43.983+0000] {dag.py:3444} INFO - Setting next_dagrun for batch_pipeline to 2023-03-22T00:00:00+00:00, run_after=2023-03-23T00:00:00+00:00
+[2023-03-22T13:00:44.078+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/data/batch_pipeline.py took 1.997 seconds
+[2023-03-22T13:01:14.627+0000] {processor.py:153} INFO - Started process (PID=57115) to work on /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:01:14.633+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/data/batch_pipeline.py for tasks to queue
+[2023-03-22T13:01:14.640+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:01:14.639+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:01:15.833+0000] {processor.py:753} INFO - DAG(s) dict_keys(['batch_pipeline']) retrieved from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:01:16.051+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:01:16.050+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T13:01:16.131+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:01:16.130+0000] {dag.py:3444} INFO - Setting next_dagrun for batch_pipeline to 2023-03-22T00:00:00+00:00, run_after=2023-03-23T00:00:00+00:00
+[2023-03-22T13:01:16.180+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/data/batch_pipeline.py took 1.573 seconds
+[2023-03-22T13:01:55.939+0000] {processor.py:153} INFO - Started process (PID=57177) to work on /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:01:55.950+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/data/batch_pipeline.py for tasks to queue
+[2023-03-22T13:01:55.955+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:01:55.953+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:02:07.207+0000] {processor.py:753} INFO - DAG(s) dict_keys(['batch_pipeline']) retrieved from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:02:07.387+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:02:07.369+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T13:02:08.366+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:02:08.365+0000] {dag.py:3444} INFO - Setting next_dagrun for batch_pipeline to 2023-03-22T00:00:00+00:00, run_after=2023-03-23T00:00:00+00:00
+[2023-03-22T13:02:08.770+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/data/batch_pipeline.py took 12.868 seconds
+[2023-03-22T13:02:39.319+0000] {processor.py:153} INFO - Started process (PID=57247) to work on /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:02:39.332+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/data/batch_pipeline.py for tasks to queue
+[2023-03-22T13:02:39.338+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:02:39.337+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:02:40.665+0000] {processor.py:753} INFO - DAG(s) dict_keys(['batch_pipeline']) retrieved from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:02:40.880+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:02:40.879+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T13:02:40.995+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:02:40.995+0000] {dag.py:3444} INFO - Setting next_dagrun for batch_pipeline to 2023-03-22T00:00:00+00:00, run_after=2023-03-23T00:00:00+00:00
+[2023-03-22T13:02:41.133+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/data/batch_pipeline.py took 1.834 seconds
+[2023-03-22T13:03:11.802+0000] {processor.py:153} INFO - Started process (PID=57308) to work on /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:03:11.815+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/data/batch_pipeline.py for tasks to queue
+[2023-03-22T13:03:11.821+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:03:11.821+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:03:12.835+0000] {processor.py:753} INFO - DAG(s) dict_keys(['batch_pipeline']) retrieved from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:03:12.915+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:03:12.909+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T13:03:12.993+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:03:12.993+0000] {dag.py:3444} INFO - Setting next_dagrun for batch_pipeline to 2023-03-22T00:00:00+00:00, run_after=2023-03-23T00:00:00+00:00
+[2023-03-22T13:03:13.040+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/data/batch_pipeline.py took 1.253 seconds
+[2023-03-22T13:03:43.686+0000] {processor.py:153} INFO - Started process (PID=57369) to work on /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:03:43.694+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/data/batch_pipeline.py for tasks to queue
+[2023-03-22T13:03:43.699+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:03:43.699+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:03:44.837+0000] {processor.py:753} INFO - DAG(s) dict_keys(['batch_pipeline']) retrieved from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:03:44.869+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:03:44.868+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T13:03:44.936+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:03:44.935+0000] {dag.py:3444} INFO - Setting next_dagrun for batch_pipeline to 2023-03-22T00:00:00+00:00, run_after=2023-03-23T00:00:00+00:00
+[2023-03-22T13:03:44.986+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/data/batch_pipeline.py took 1.331 seconds
+[2023-03-22T13:04:15.297+0000] {processor.py:153} INFO - Started process (PID=57431) to work on /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:04:15.320+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/data/batch_pipeline.py for tasks to queue
+[2023-03-22T13:04:15.324+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:04:15.323+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:04:18.031+0000] {processor.py:753} INFO - DAG(s) dict_keys(['batch_pipeline']) retrieved from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:04:18.612+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:04:18.611+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T13:04:18.781+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:04:18.778+0000] {dag.py:3444} INFO - Setting next_dagrun for batch_pipeline to 2023-03-22T00:00:00+00:00, run_after=2023-03-23T00:00:00+00:00
+[2023-03-22T13:04:18.842+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/data/batch_pipeline.py took 3.611 seconds
+[2023-03-22T13:04:49.442+0000] {processor.py:153} INFO - Started process (PID=57496) to work on /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:04:49.460+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/data/batch_pipeline.py for tasks to queue
+[2023-03-22T13:04:49.488+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:04:49.488+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:04:51.981+0000] {processor.py:753} INFO - DAG(s) dict_keys(['batch_pipeline']) retrieved from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:04:52.095+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:04:52.094+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T13:04:52.302+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:04:52.301+0000] {dag.py:3444} INFO - Setting next_dagrun for batch_pipeline to 2023-03-22T00:00:00+00:00, run_after=2023-03-23T00:00:00+00:00
+[2023-03-22T13:04:52.410+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/data/batch_pipeline.py took 3.008 seconds
+[2023-03-22T13:05:22.665+0000] {processor.py:153} INFO - Started process (PID=57560) to work on /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:05:22.671+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/data/batch_pipeline.py for tasks to queue
+[2023-03-22T13:05:22.675+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:05:22.675+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:05:23.776+0000] {processor.py:753} INFO - DAG(s) dict_keys(['batch_pipeline']) retrieved from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:05:23.806+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:05:23.804+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T13:05:23.858+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:05:23.858+0000] {dag.py:3444} INFO - Setting next_dagrun for batch_pipeline to 2023-03-22T00:00:00+00:00, run_after=2023-03-23T00:00:00+00:00
+[2023-03-22T13:05:23.899+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/data/batch_pipeline.py took 1.256 seconds
+[2023-03-22T13:05:54.099+0000] {processor.py:153} INFO - Started process (PID=57622) to work on /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:05:54.103+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/data/batch_pipeline.py for tasks to queue
+[2023-03-22T13:05:54.119+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:05:54.119+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:05:55.144+0000] {processor.py:753} INFO - DAG(s) dict_keys(['batch_pipeline']) retrieved from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:05:55.305+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:05:55.302+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T13:05:55.379+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:05:55.379+0000] {dag.py:3444} INFO - Setting next_dagrun for batch_pipeline to 2023-03-22T00:00:00+00:00, run_after=2023-03-23T00:00:00+00:00
+[2023-03-22T13:05:55.435+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/data/batch_pipeline.py took 1.345 seconds
+[2023-03-22T13:06:36.380+0000] {processor.py:153} INFO - Started process (PID=57684) to work on /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:06:36.386+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/data/batch_pipeline.py for tasks to queue
+[2023-03-22T13:06:36.391+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:06:36.390+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:06:40.486+0000] {processor.py:753} INFO - DAG(s) dict_keys(['batch_pipeline']) retrieved from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:06:41.084+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:06:41.079+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T13:06:41.740+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:06:41.732+0000] {dag.py:3444} INFO - Setting next_dagrun for batch_pipeline to 2023-03-22T00:00:00+00:00, run_after=2023-03-23T00:00:00+00:00
+[2023-03-22T13:06:41.885+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/data/batch_pipeline.py took 5.541 seconds
+[2023-03-22T13:07:12.096+0000] {processor.py:153} INFO - Started process (PID=57753) to work on /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:07:12.101+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/data/batch_pipeline.py for tasks to queue
+[2023-03-22T13:07:12.108+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:07:12.107+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:07:14.053+0000] {processor.py:753} INFO - DAG(s) dict_keys(['batch_pipeline']) retrieved from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:07:14.092+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:07:14.090+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T13:07:14.162+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:07:14.162+0000] {dag.py:3444} INFO - Setting next_dagrun for batch_pipeline to 2023-03-22T00:00:00+00:00, run_after=2023-03-23T00:00:00+00:00
+[2023-03-22T13:07:14.218+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/data/batch_pipeline.py took 2.144 seconds
+[2023-03-22T13:07:46.144+0000] {processor.py:153} INFO - Started process (PID=57816) to work on /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:07:46.152+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/data/batch_pipeline.py for tasks to queue
+[2023-03-22T13:07:46.160+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:07:46.160+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:07:48.006+0000] {processor.py:753} INFO - DAG(s) dict_keys(['batch_pipeline']) retrieved from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:07:48.427+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:07:48.426+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T13:07:48.712+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:07:48.711+0000] {dag.py:3444} INFO - Setting next_dagrun for batch_pipeline to 2023-03-22T00:00:00+00:00, run_after=2023-03-23T00:00:00+00:00
+[2023-03-22T13:07:48.901+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/data/batch_pipeline.py took 2.774 seconds
+[2023-03-22T13:08:27.757+0000] {processor.py:153} INFO - Started process (PID=57877) to work on /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:08:27.762+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/data/batch_pipeline.py for tasks to queue
+[2023-03-22T13:08:27.775+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:08:27.774+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:08:30.343+0000] {processor.py:753} INFO - DAG(s) dict_keys(['batch_pipeline']) retrieved from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:08:30.519+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:08:30.518+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T13:08:30.717+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:08:30.717+0000] {dag.py:3444} INFO - Setting next_dagrun for batch_pipeline to 2023-03-22T00:00:00+00:00, run_after=2023-03-23T00:00:00+00:00
+[2023-03-22T13:08:30.852+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/data/batch_pipeline.py took 3.115 seconds
+[2023-03-22T13:09:01.306+0000] {processor.py:153} INFO - Started process (PID=57939) to work on /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:09:01.314+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/data/batch_pipeline.py for tasks to queue
+[2023-03-22T13:09:01.321+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:09:01.320+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:09:02.676+0000] {processor.py:753} INFO - DAG(s) dict_keys(['batch_pipeline']) retrieved from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:09:02.717+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:09:02.710+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T13:09:02.824+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:09:02.823+0000] {dag.py:3444} INFO - Setting next_dagrun for batch_pipeline to 2023-03-22T00:00:00+00:00, run_after=2023-03-23T00:00:00+00:00
+[2023-03-22T13:09:02.893+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/data/batch_pipeline.py took 1.601 seconds
+[2023-03-22T13:09:36.156+0000] {processor.py:153} INFO - Started process (PID=58000) to work on /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:09:36.167+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/data/batch_pipeline.py for tasks to queue
+[2023-03-22T13:09:36.183+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:09:36.181+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:09:41.019+0000] {processor.py:753} INFO - DAG(s) dict_keys(['batch_pipeline']) retrieved from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:09:41.654+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:09:41.635+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T13:09:41.829+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:09:41.828+0000] {dag.py:3444} INFO - Setting next_dagrun for batch_pipeline to 2023-03-22T00:00:00+00:00, run_after=2023-03-23T00:00:00+00:00
+[2023-03-22T13:09:41.915+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/data/batch_pipeline.py took 5.809 seconds
+[2023-03-22T13:10:12.141+0000] {processor.py:153} INFO - Started process (PID=58064) to work on /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:10:12.150+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/data/batch_pipeline.py for tasks to queue
+[2023-03-22T13:10:12.157+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:10:12.157+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:10:14.351+0000] {processor.py:753} INFO - DAG(s) dict_keys(['batch_pipeline']) retrieved from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:10:14.468+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:10:14.467+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T13:10:14.626+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:10:14.626+0000] {dag.py:3444} INFO - Setting next_dagrun for batch_pipeline to 2023-03-22T00:00:00+00:00, run_after=2023-03-23T00:00:00+00:00
+[2023-03-22T13:10:14.814+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/data/batch_pipeline.py took 2.685 seconds
+[2023-03-22T13:10:46.427+0000] {processor.py:153} INFO - Started process (PID=58130) to work on /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:10:46.431+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/data/batch_pipeline.py for tasks to queue
+[2023-03-22T13:10:46.435+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:10:46.435+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:10:50.921+0000] {processor.py:753} INFO - DAG(s) dict_keys(['batch_pipeline']) retrieved from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:10:51.578+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:10:51.572+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T13:10:51.895+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:10:51.894+0000] {dag.py:3444} INFO - Setting next_dagrun for batch_pipeline to 2023-03-22T00:00:00+00:00, run_after=2023-03-23T00:00:00+00:00
+[2023-03-22T13:10:52.068+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/data/batch_pipeline.py took 5.657 seconds
+[2023-03-22T13:11:22.773+0000] {processor.py:153} INFO - Started process (PID=58193) to work on /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:11:22.778+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/data/batch_pipeline.py for tasks to queue
+[2023-03-22T13:11:22.787+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:11:22.786+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:11:25.530+0000] {processor.py:753} INFO - DAG(s) dict_keys(['batch_pipeline']) retrieved from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:11:25.666+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:11:25.665+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T13:11:25.788+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:11:25.787+0000] {dag.py:3444} INFO - Setting next_dagrun for batch_pipeline to 2023-03-22T00:00:00+00:00, run_after=2023-03-23T00:00:00+00:00
+[2023-03-22T13:11:25.865+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/data/batch_pipeline.py took 3.146 seconds
+[2023-03-22T13:11:56.287+0000] {processor.py:153} INFO - Started process (PID=58255) to work on /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:11:56.292+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/data/batch_pipeline.py for tasks to queue
+[2023-03-22T13:11:56.296+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:11:56.295+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:11:59.186+0000] {processor.py:753} INFO - DAG(s) dict_keys(['batch_pipeline']) retrieved from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:11:59.226+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:11:59.224+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T13:11:59.287+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:11:59.287+0000] {dag.py:3444} INFO - Setting next_dagrun for batch_pipeline to 2023-03-22T00:00:00+00:00, run_after=2023-03-23T00:00:00+00:00
+[2023-03-22T13:11:59.331+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/data/batch_pipeline.py took 3.063 seconds
+[2023-03-22T13:12:29.822+0000] {processor.py:153} INFO - Started process (PID=58318) to work on /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:12:29.828+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/data/batch_pipeline.py for tasks to queue
+[2023-03-22T13:12:29.832+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:12:29.831+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:12:30.745+0000] {processor.py:753} INFO - DAG(s) dict_keys(['batch_pipeline']) retrieved from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:12:30.879+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:12:30.876+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T13:12:30.940+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:12:30.940+0000] {dag.py:3444} INFO - Setting next_dagrun for batch_pipeline to 2023-03-22T00:00:00+00:00, run_after=2023-03-23T00:00:00+00:00
+[2023-03-22T13:12:30.988+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/data/batch_pipeline.py took 1.176 seconds
+[2023-03-22T13:13:01.862+0000] {processor.py:153} INFO - Started process (PID=58379) to work on /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:13:01.875+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/data/batch_pipeline.py for tasks to queue
+[2023-03-22T13:13:01.878+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:13:01.878+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:13:02.880+0000] {processor.py:753} INFO - DAG(s) dict_keys(['batch_pipeline']) retrieved from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:13:02.931+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:13:02.931+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T13:13:03.014+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:13:03.014+0000] {dag.py:3444} INFO - Setting next_dagrun for batch_pipeline to 2023-03-22T00:00:00+00:00, run_after=2023-03-23T00:00:00+00:00
+[2023-03-22T13:13:03.110+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/data/batch_pipeline.py took 1.260 seconds
+[2023-03-22T13:13:33.373+0000] {processor.py:153} INFO - Started process (PID=58440) to work on /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:13:33.378+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/data/batch_pipeline.py for tasks to queue
+[2023-03-22T13:13:33.382+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:13:33.381+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:13:34.122+0000] {processor.py:753} INFO - DAG(s) dict_keys(['batch_pipeline']) retrieved from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:13:34.148+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:13:34.148+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T13:13:34.202+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:13:34.201+0000] {dag.py:3444} INFO - Setting next_dagrun for batch_pipeline to 2023-03-22T00:00:00+00:00, run_after=2023-03-23T00:00:00+00:00
+[2023-03-22T13:13:34.241+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/data/batch_pipeline.py took 0.878 seconds
+[2023-03-22T13:14:04.932+0000] {processor.py:153} INFO - Started process (PID=58502) to work on /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:14:04.940+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/data/batch_pipeline.py for tasks to queue
+[2023-03-22T13:14:04.945+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:14:04.944+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:14:05.872+0000] {processor.py:753} INFO - DAG(s) dict_keys(['batch_pipeline']) retrieved from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:14:06.008+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:14:06.006+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T13:14:06.085+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:14:06.085+0000] {dag.py:3444} INFO - Setting next_dagrun for batch_pipeline to 2023-03-22T00:00:00+00:00, run_after=2023-03-23T00:00:00+00:00
+[2023-03-22T13:14:06.147+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/data/batch_pipeline.py took 1.249 seconds
+[2023-03-22T13:14:36.722+0000] {processor.py:153} INFO - Started process (PID=58563) to work on /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:14:36.739+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/data/batch_pipeline.py for tasks to queue
+[2023-03-22T13:14:36.742+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:14:36.741+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:14:38.300+0000] {processor.py:753} INFO - DAG(s) dict_keys(['batch_pipeline']) retrieved from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:14:38.531+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:14:38.530+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T13:14:38.647+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:14:38.647+0000] {dag.py:3444} INFO - Setting next_dagrun for batch_pipeline to 2023-03-22T00:00:00+00:00, run_after=2023-03-23T00:00:00+00:00
+[2023-03-22T13:14:38.775+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/data/batch_pipeline.py took 2.068 seconds
+[2023-03-22T13:15:14.272+0000] {processor.py:153} INFO - Started process (PID=58611) to work on /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:15:14.281+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/data/batch_pipeline.py for tasks to queue
+[2023-03-22T13:15:14.287+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:15:14.286+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:15:18.427+0000] {processor.py:753} INFO - DAG(s) dict_keys(['batch_pipeline']) retrieved from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:15:18.535+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:15:18.534+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T13:15:18.746+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:15:18.737+0000] {dag.py:3444} INFO - Setting next_dagrun for batch_pipeline to 2023-03-22T00:00:00+00:00, run_after=2023-03-23T00:00:00+00:00
+[2023-03-22T13:15:18.850+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/data/batch_pipeline.py took 4.599 seconds
+[2023-03-22T13:15:49.305+0000] {processor.py:153} INFO - Started process (PID=58674) to work on /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:15:49.313+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/data/batch_pipeline.py for tasks to queue
+[2023-03-22T13:15:49.324+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:15:49.323+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:15:53.757+0000] {processor.py:753} INFO - DAG(s) dict_keys(['batch_pipeline']) retrieved from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:15:54.246+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:15:54.245+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T13:15:54.385+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:15:54.384+0000] {dag.py:3444} INFO - Setting next_dagrun for batch_pipeline to 2023-03-22T00:00:00+00:00, run_after=2023-03-23T00:00:00+00:00
+[2023-03-22T13:15:54.514+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/data/batch_pipeline.py took 5.222 seconds
+[2023-03-22T13:16:24.932+0000] {processor.py:153} INFO - Started process (PID=58744) to work on /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:16:24.935+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/data/batch_pipeline.py for tasks to queue
+[2023-03-22T13:16:24.938+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:16:24.938+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:16:25.731+0000] {processor.py:753} INFO - DAG(s) dict_keys(['batch_pipeline']) retrieved from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:16:25.773+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:16:25.772+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T13:16:25.815+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:16:25.815+0000] {dag.py:3444} INFO - Setting next_dagrun for batch_pipeline to 2023-03-22T00:00:00+00:00, run_after=2023-03-23T00:00:00+00:00
+[2023-03-22T13:16:25.849+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/data/batch_pipeline.py took 0.940 seconds
+[2023-03-22T13:16:56.554+0000] {processor.py:153} INFO - Started process (PID=58807) to work on /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:16:56.559+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/data/batch_pipeline.py for tasks to queue
+[2023-03-22T13:16:56.564+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:16:56.563+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:16:57.247+0000] {processor.py:753} INFO - DAG(s) dict_keys(['batch_pipeline']) retrieved from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:16:57.269+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:16:57.268+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T13:16:57.312+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:16:57.312+0000] {dag.py:3444} INFO - Setting next_dagrun for batch_pipeline to 2023-03-22T00:00:00+00:00, run_after=2023-03-23T00:00:00+00:00
+[2023-03-22T13:16:57.349+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/data/batch_pipeline.py took 0.802 seconds
+[2023-03-22T13:17:28.202+0000] {processor.py:153} INFO - Started process (PID=58868) to work on /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:17:28.208+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/data/batch_pipeline.py for tasks to queue
+[2023-03-22T13:17:28.213+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:17:28.212+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:17:28.981+0000] {processor.py:753} INFO - DAG(s) dict_keys(['batch_pipeline']) retrieved from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:17:29.093+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:17:29.092+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T13:17:29.138+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:17:29.138+0000] {dag.py:3444} INFO - Setting next_dagrun for batch_pipeline to 2023-03-22T00:00:00+00:00, run_after=2023-03-23T00:00:00+00:00
+[2023-03-22T13:17:29.172+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/data/batch_pipeline.py took 0.995 seconds
+[2023-03-22T13:17:59.289+0000] {processor.py:153} INFO - Started process (PID=58930) to work on /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:17:59.293+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/data/batch_pipeline.py for tasks to queue
+[2023-03-22T13:17:59.296+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:17:59.296+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:17:59.965+0000] {processor.py:753} INFO - DAG(s) dict_keys(['batch_pipeline']) retrieved from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:18:00.016+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:18:00.015+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T13:18:00.066+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:18:00.066+0000] {dag.py:3444} INFO - Setting next_dagrun for batch_pipeline to 2023-03-22T00:00:00+00:00, run_after=2023-03-23T00:00:00+00:00
+[2023-03-22T13:18:00.105+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/data/batch_pipeline.py took 0.823 seconds
+[2023-03-22T13:18:30.703+0000] {processor.py:153} INFO - Started process (PID=58991) to work on /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:18:30.709+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/data/batch_pipeline.py for tasks to queue
+[2023-03-22T13:18:30.714+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:18:30.713+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:18:31.437+0000] {processor.py:753} INFO - DAG(s) dict_keys(['batch_pipeline']) retrieved from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:18:31.459+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:18:31.458+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T13:18:31.516+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:18:31.516+0000] {dag.py:3444} INFO - Setting next_dagrun for batch_pipeline to 2023-03-22T00:00:00+00:00, run_after=2023-03-23T00:00:00+00:00
+[2023-03-22T13:18:31.564+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/data/batch_pipeline.py took 0.869 seconds
+[2023-03-22T13:19:01.703+0000] {processor.py:153} INFO - Started process (PID=59052) to work on /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:19:01.709+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/data/batch_pipeline.py for tasks to queue
+[2023-03-22T13:19:01.714+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:19:01.713+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:19:02.600+0000] {processor.py:753} INFO - DAG(s) dict_keys(['batch_pipeline']) retrieved from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:19:02.700+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:19:02.700+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T13:19:02.742+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:19:02.742+0000] {dag.py:3444} INFO - Setting next_dagrun for batch_pipeline to 2023-03-22T00:00:00+00:00, run_after=2023-03-23T00:00:00+00:00
+[2023-03-22T13:19:02.785+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/data/batch_pipeline.py took 1.096 seconds
+[2023-03-22T13:19:33.138+0000] {processor.py:153} INFO - Started process (PID=59115) to work on /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:19:33.143+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/data/batch_pipeline.py for tasks to queue
+[2023-03-22T13:19:33.146+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:19:33.146+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:19:34.019+0000] {processor.py:753} INFO - DAG(s) dict_keys(['batch_pipeline']) retrieved from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:19:34.061+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:19:34.060+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T13:19:34.116+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:19:34.115+0000] {dag.py:3444} INFO - Setting next_dagrun for batch_pipeline to 2023-03-22T00:00:00+00:00, run_after=2023-03-23T00:00:00+00:00
+[2023-03-22T13:19:34.185+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/data/batch_pipeline.py took 1.062 seconds
+[2023-03-22T13:20:04.388+0000] {processor.py:153} INFO - Started process (PID=59176) to work on /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:20:04.391+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/data/batch_pipeline.py for tasks to queue
+[2023-03-22T13:20:04.396+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:20:04.395+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:20:05.557+0000] {processor.py:753} INFO - DAG(s) dict_keys(['batch_pipeline']) retrieved from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:20:05.637+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:20:05.636+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T13:20:05.800+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:20:05.800+0000] {dag.py:3444} INFO - Setting next_dagrun for batch_pipeline to 2023-03-22T00:00:00+00:00, run_after=2023-03-23T00:00:00+00:00
+[2023-03-22T13:20:05.888+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/data/batch_pipeline.py took 1.507 seconds
+[2023-03-22T13:20:36.035+0000] {processor.py:153} INFO - Started process (PID=59236) to work on /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:20:36.039+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/data/batch_pipeline.py for tasks to queue
+[2023-03-22T13:20:36.042+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:20:36.042+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:20:36.696+0000] {processor.py:753} INFO - DAG(s) dict_keys(['batch_pipeline']) retrieved from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:20:36.800+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:20:36.799+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T13:20:36.850+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:20:36.850+0000] {dag.py:3444} INFO - Setting next_dagrun for batch_pipeline to 2023-03-22T00:00:00+00:00, run_after=2023-03-23T00:00:00+00:00
+[2023-03-22T13:20:36.893+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/data/batch_pipeline.py took 0.866 seconds
+[2023-03-22T13:21:07.016+0000] {processor.py:153} INFO - Started process (PID=59297) to work on /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:21:07.020+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/data/batch_pipeline.py for tasks to queue
+[2023-03-22T13:21:07.023+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:21:07.023+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:21:07.762+0000] {processor.py:753} INFO - DAG(s) dict_keys(['batch_pipeline']) retrieved from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:21:07.802+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:21:07.802+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T13:21:07.848+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:21:07.848+0000] {dag.py:3444} INFO - Setting next_dagrun for batch_pipeline to 2023-03-22T00:00:00+00:00, run_after=2023-03-23T00:00:00+00:00
+[2023-03-22T13:21:07.882+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/data/batch_pipeline.py took 0.877 seconds
+[2023-03-22T13:21:37.978+0000] {processor.py:153} INFO - Started process (PID=59359) to work on /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:21:37.982+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/data/batch_pipeline.py for tasks to queue
+[2023-03-22T13:21:37.985+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:21:37.984+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:21:38.651+0000] {processor.py:753} INFO - DAG(s) dict_keys(['batch_pipeline']) retrieved from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:21:38.673+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:21:38.673+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T13:21:38.719+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:21:38.719+0000] {dag.py:3444} INFO - Setting next_dagrun for batch_pipeline to 2023-03-22T00:00:00+00:00, run_after=2023-03-23T00:00:00+00:00
+[2023-03-22T13:21:38.753+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/data/batch_pipeline.py took 0.784 seconds
+[2023-03-22T13:22:08.839+0000] {processor.py:153} INFO - Started process (PID=59420) to work on /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:22:08.843+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/data/batch_pipeline.py for tasks to queue
+[2023-03-22T13:22:08.848+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:22:08.847+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:22:09.521+0000] {processor.py:753} INFO - DAG(s) dict_keys(['batch_pipeline']) retrieved from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:22:09.623+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:22:09.623+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T13:22:09.667+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:22:09.666+0000] {dag.py:3444} INFO - Setting next_dagrun for batch_pipeline to 2023-03-22T00:00:00+00:00, run_after=2023-03-23T00:00:00+00:00
+[2023-03-22T13:22:09.703+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/data/batch_pipeline.py took 0.875 seconds
+[2023-03-22T13:22:39.944+0000] {processor.py:153} INFO - Started process (PID=59481) to work on /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:22:39.949+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/data/batch_pipeline.py for tasks to queue
+[2023-03-22T13:22:39.951+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:22:39.951+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:22:40.623+0000] {processor.py:753} INFO - DAG(s) dict_keys(['batch_pipeline']) retrieved from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:22:40.664+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:22:40.663+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T13:22:40.713+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:22:40.713+0000] {dag.py:3444} INFO - Setting next_dagrun for batch_pipeline to 2023-03-22T00:00:00+00:00, run_after=2023-03-23T00:00:00+00:00
+[2023-03-22T13:22:40.749+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/data/batch_pipeline.py took 0.813 seconds
+[2023-03-22T13:23:11.023+0000] {processor.py:153} INFO - Started process (PID=59542) to work on /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:23:11.028+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/data/batch_pipeline.py for tasks to queue
+[2023-03-22T13:23:11.031+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:23:11.031+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:23:11.689+0000] {processor.py:753} INFO - DAG(s) dict_keys(['batch_pipeline']) retrieved from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:23:11.712+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:23:11.711+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T13:23:11.766+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:23:11.766+0000] {dag.py:3444} INFO - Setting next_dagrun for batch_pipeline to 2023-03-22T00:00:00+00:00, run_after=2023-03-23T00:00:00+00:00
+[2023-03-22T13:23:11.800+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/data/batch_pipeline.py took 0.787 seconds
+[2023-03-22T13:23:43.469+0000] {processor.py:153} INFO - Started process (PID=59603) to work on /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:23:43.476+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/data/batch_pipeline.py for tasks to queue
+[2023-03-22T13:23:43.486+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:23:43.486+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:23:45.130+0000] {processor.py:753} INFO - DAG(s) dict_keys(['batch_pipeline']) retrieved from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:23:45.301+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:23:45.300+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T13:23:45.357+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:23:45.357+0000] {dag.py:3444} INFO - Setting next_dagrun for batch_pipeline to 2023-03-22T00:00:00+00:00, run_after=2023-03-23T00:00:00+00:00
+[2023-03-22T13:23:45.401+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/data/batch_pipeline.py took 1.955 seconds
+[2023-03-22T13:24:16.426+0000] {processor.py:153} INFO - Started process (PID=59666) to work on /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:24:16.434+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/data/batch_pipeline.py for tasks to queue
+[2023-03-22T13:24:16.442+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:24:16.442+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:24:18.791+0000] {processor.py:753} INFO - DAG(s) dict_keys(['batch_pipeline']) retrieved from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:24:18.973+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:24:18.968+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T13:24:19.332+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:24:19.332+0000] {dag.py:3444} INFO - Setting next_dagrun for batch_pipeline to 2023-03-22T00:00:00+00:00, run_after=2023-03-23T00:00:00+00:00
+[2023-03-22T13:24:19.436+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/data/batch_pipeline.py took 3.018 seconds
+[2023-03-22T13:24:52.109+0000] {processor.py:153} INFO - Started process (PID=59729) to work on /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:24:52.116+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/data/batch_pipeline.py for tasks to queue
+[2023-03-22T13:24:52.126+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:24:52.124+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:24:54.710+0000] {processor.py:753} INFO - DAG(s) dict_keys(['batch_pipeline']) retrieved from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:24:54.765+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:24:54.763+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T13:24:54.880+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:24:54.880+0000] {dag.py:3444} INFO - Setting next_dagrun for batch_pipeline to 2023-03-22T00:00:00+00:00, run_after=2023-03-23T00:00:00+00:00
+[2023-03-22T13:24:54.948+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/data/batch_pipeline.py took 2.865 seconds
+[2023-03-22T13:25:25.435+0000] {processor.py:153} INFO - Started process (PID=59799) to work on /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:25:25.438+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/data/batch_pipeline.py for tasks to queue
+[2023-03-22T13:25:25.441+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:25:25.441+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:25:26.946+0000] {processor.py:753} INFO - DAG(s) dict_keys(['batch_pipeline']) retrieved from /opt/airflow/dags/data/batch_pipeline.py
+[2023-03-22T13:25:27.078+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:25:27.077+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-22T13:25:27.139+0000] {logging_mixin.py:137} INFO - [2023-03-22T13:25:27.139+0000] {dag.py:3444} INFO - Setting next_dagrun for batch_pipeline to 2023-03-22T00:00:00+00:00, run_after=2023-03-23T00:00:00+00:00
+[2023-03-22T13:25:27.184+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/data/batch_pipeline.py took 1.769 seconds

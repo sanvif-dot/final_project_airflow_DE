@@ -1,0 +1,56 @@
+[2023-03-21T12:39:05.850+0000] {processor.py:153} INFO - Started process (PID=1545) to work on /opt/airflow/dags/batch_pipeline copy.py
+[2023-03-21T12:39:05.854+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/batch_pipeline copy.py for tasks to queue
+[2023-03-21T12:39:05.857+0000] {logging_mixin.py:137} INFO - [2023-03-21T12:39:05.857+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/batch_pipeline copy.py
+[2023-03-21T12:39:06.885+0000] {logging_mixin.py:137} INFO - [2023-03-21T12:39:06.883+0000] {abstractoperator.py:185} ERROR - Failed to resolve template field 'sql'
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/abstractoperator.py", line 183, in resolve_template_files
+    setattr(self, field, env.loader.get_source(env, content)[0])  # type: ignore
+  File "/home/airflow/.local/lib/python3.7/site-packages/jinja2/loaders.py", line 218, in get_source
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: create_tables.sql
+[2023-03-21T12:39:06.894+0000] {processor.py:753} INFO - DAG(s) dict_keys(['batch_pipeline']) retrieved from /opt/airflow/dags/batch_pipeline copy.py
+[2023-03-21T12:39:06.991+0000] {logging_mixin.py:137} INFO - [2023-03-21T12:39:06.990+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-21T12:39:07.039+0000] {logging_mixin.py:137} INFO - [2023-03-21T12:39:07.039+0000] {dag.py:3444} INFO - Setting next_dagrun for batch_pipeline to 2023-03-20T00:00:00+00:00, run_after=2023-03-21T00:00:00+00:00
+[2023-03-21T12:39:07.094+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/batch_pipeline copy.py took 1.251 seconds
+[2023-03-21T12:39:37.262+0000] {processor.py:153} INFO - Started process (PID=1600) to work on /opt/airflow/dags/batch_pipeline copy.py
+[2023-03-21T12:39:37.267+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/batch_pipeline copy.py for tasks to queue
+[2023-03-21T12:39:37.269+0000] {logging_mixin.py:137} INFO - [2023-03-21T12:39:37.269+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/batch_pipeline copy.py
+[2023-03-21T12:39:37.972+0000] {logging_mixin.py:137} INFO - [2023-03-21T12:39:37.970+0000] {abstractoperator.py:185} ERROR - Failed to resolve template field 'sql'
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/abstractoperator.py", line 183, in resolve_template_files
+    setattr(self, field, env.loader.get_source(env, content)[0])  # type: ignore
+  File "/home/airflow/.local/lib/python3.7/site-packages/jinja2/loaders.py", line 218, in get_source
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: create_tables.sql
+[2023-03-21T12:39:37.981+0000] {processor.py:753} INFO - DAG(s) dict_keys(['batch_pipeline']) retrieved from /opt/airflow/dags/batch_pipeline copy.py
+[2023-03-21T12:39:38.020+0000] {logging_mixin.py:137} INFO - [2023-03-21T12:39:38.019+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-21T12:39:38.066+0000] {logging_mixin.py:137} INFO - [2023-03-21T12:39:38.065+0000] {dag.py:3444} INFO - Setting next_dagrun for batch_pipeline to 2023-03-20T00:00:00+00:00, run_after=2023-03-21T00:00:00+00:00
+[2023-03-21T12:39:38.098+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/batch_pipeline copy.py took 0.848 seconds
+[2023-03-21T12:40:08.703+0000] {processor.py:153} INFO - Started process (PID=1657) to work on /opt/airflow/dags/batch_pipeline copy.py
+[2023-03-21T12:40:08.732+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/batch_pipeline copy.py for tasks to queue
+[2023-03-21T12:40:08.801+0000] {logging_mixin.py:137} INFO - [2023-03-21T12:40:08.801+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/batch_pipeline copy.py
+[2023-03-21T12:40:11.060+0000] {logging_mixin.py:137} INFO - [2023-03-21T12:40:11.056+0000] {abstractoperator.py:185} ERROR - Failed to resolve template field 'sql'
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/abstractoperator.py", line 183, in resolve_template_files
+    setattr(self, field, env.loader.get_source(env, content)[0])  # type: ignore
+  File "/home/airflow/.local/lib/python3.7/site-packages/jinja2/loaders.py", line 218, in get_source
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: create_tables.sql
+[2023-03-21T12:40:11.079+0000] {processor.py:753} INFO - DAG(s) dict_keys(['batch_pipeline']) retrieved from /opt/airflow/dags/batch_pipeline copy.py
+[2023-03-21T12:40:11.199+0000] {logging_mixin.py:137} INFO - [2023-03-21T12:40:11.198+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-21T12:40:11.255+0000] {logging_mixin.py:137} INFO - [2023-03-21T12:40:11.254+0000] {dag.py:3444} INFO - Setting next_dagrun for batch_pipeline to 2023-03-20T00:00:00+00:00, run_after=2023-03-21T00:00:00+00:00
+[2023-03-21T12:40:11.302+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/batch_pipeline copy.py took 2.610 seconds
+[2023-03-21T12:40:12.963+0000] {processor.py:153} INFO - Started process (PID=1664) to work on /opt/airflow/dags/batch_pipeline copy.py
+[2023-03-21T12:40:12.967+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/batch_pipeline copy.py for tasks to queue
+[2023-03-21T12:40:12.974+0000] {logging_mixin.py:137} INFO - [2023-03-21T12:40:12.973+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/batch_pipeline copy.py
+[2023-03-21T12:40:13.069+0000] {logging_mixin.py:137} INFO - [2023-03-21T12:40:13.056+0000] {dagbag.py:341} ERROR - Failed to import: /opt/airflow/dags/batch_pipeline copy.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 337, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 728, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/batch_pipeline copy.py", line 4, in <module>
+    from airflow.operators.python_operator.PythonOperator import PythonOperator
+ModuleNotFoundError: No module named 'airflow.operators.python_operator.PythonOperator'; 'airflow.operators.python_operator' is not a package
+[2023-03-21T12:40:13.075+0000] {processor.py:755} WARNING - No viable dags retrieved from /opt/airflow/dags/batch_pipeline copy.py
+[2023-03-21T12:40:13.161+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/batch_pipeline copy.py took 0.211 seconds
